@@ -1,0 +1,6 @@
+# Visual Studio - General
+*.suo
+*.csproj.user
+*.sln.Cache
+bin
+obj
