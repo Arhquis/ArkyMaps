@@ -61,11 +61,74 @@ namespace ArkyMapService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to query client user by its name and password {0}..
+        /// </summary>
+        internal static string ERROR_QUERY_CLIENT_USER_BY_NAME_AND_PASSWORD {
+            get {
+                return ResourceManager.GetString("ERROR_QUERY_CLIENT_USER_BY_NAME_AND_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to query phone user by its name and password {0}..
+        /// </summary>
+        internal static string ERROR_QUERY_PHONE_USER_BY_NAME_AND_PASSWORD {
+            get {
+                return ResourceManager.GetString("ERROR_QUERY_PHONE_USER_BY_NAME_AND_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to start service {0}..
         /// </summary>
         internal static string ERROR_SERVICE_START {
             get {
                 return ResourceManager.GetString("ERROR_SERVICE_START", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login failed for client user {0}..
+        /// </summary>
+        internal static string MESSAGE_CLIENT_USER_LOGIN_FAIlED {
+            get {
+                return ResourceManager.GetString("MESSAGE_CLIENT_USER_LOGIN_FAIlED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client user {0} logged in at {1}..
+        /// </summary>
+        internal static string MESSAGE_CLIENT_USER_LOGIN_SUCCEEDED {
+            get {
+                return ResourceManager.GetString("MESSAGE_CLIENT_USER_LOGIN_SUCCEEDED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client user {0} logged out at {1}..
+        /// </summary>
+        internal static string MESSAGE_CLIENT_USER_LOGOUT_SUCCEEDED {
+            get {
+                return ResourceManager.GetString("MESSAGE_CLIENT_USER_LOGOUT_SUCCEEDED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login failed for phone user {0}..
+        /// </summary>
+        internal static string MESSAGE_PHONE_USER_LOGIN_FAIlED {
+            get {
+                return ResourceManager.GetString("MESSAGE_PHONE_USER_LOGIN_FAIlED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone user {0} logged in at {1}..
+        /// </summary>
+        internal static string MESSAGE_PHONE_USER_LOGIN_SUCCEEDED {
+            get {
+                return ResourceManager.GetString("MESSAGE_PHONE_USER_LOGIN_SUCCEEDED", resourceCulture);
             }
         }
         

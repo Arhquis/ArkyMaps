@@ -22,17 +22,17 @@ namespace ArkyMapsClient.ArkyMapServiceReference {
         System.Threading.Tasks.Task<bool> LoginAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/Logout", ReplyAction="ArkyMapService/IMapService/LogoutResponse")]
-        bool Logout(long userId);
+        void Logout(long userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/Logout", ReplyAction="ArkyMapService/IMapService/LogoutResponse")]
-        System.Threading.Tasks.Task<bool> LogoutAsync(long userId);
+        System.Threading.Tasks.Task LogoutAsync(long userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IMapServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="ArkyMapService/IMapService/NewLocation")]
-        void NewLocation(long userId, long lon, long lat);
+        void NewLocation(ArkyMapsDomainModel.Location location);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -71,11 +71,11 @@ namespace ArkyMapsClient.ArkyMapServiceReference {
             return base.Channel.LoginAsync(username, password);
         }
         
-        public bool Logout(long userId) {
-            return base.Channel.Logout(userId);
+        public void Logout(long userId) {
+            base.Channel.Logout(userId);
         }
         
-        public System.Threading.Tasks.Task<bool> LogoutAsync(long userId) {
+        public System.Threading.Tasks.Task LogoutAsync(long userId) {
             return base.Channel.LogoutAsync(userId);
         }
     }

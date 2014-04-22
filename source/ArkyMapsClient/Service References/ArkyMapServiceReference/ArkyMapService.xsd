@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="ArkyMapService" elementFormDefault="qualified" targetNamespace="ArkyMapService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="ArkyMaps.com/PhoneService" />
   <xs:element name="Login">
     <xs:complexType>
       <xs:sequence>
@@ -24,17 +25,13 @@
   </xs:element>
   <xs:element name="LogoutResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="LogoutResult" type="xs:boolean" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="NewLocation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="userId" type="xs:long" />
-        <xs:element minOccurs="0" name="lon" type="xs:long" />
-        <xs:element minOccurs="0" name="lat" type="xs:long" />
+        <xs:element xmlns:q1="ArkyMaps.com/PhoneService" minOccurs="0" name="location" nillable="true" type="q1:Location" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

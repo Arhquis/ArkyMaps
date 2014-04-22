@@ -116,6 +116,9 @@
     <None Include="Service References\ArkyMapServiceReference\ArkyMapService.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ArkyMapServiceReference\PhoneService.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ArkyMapServiceReference\service.wsdl" />
     <None Include="Service References\ArkyMapServiceReference\service.xsd">
       <SubType>Designer</SubType>
@@ -134,6 +137,12 @@
     </None>
     <None Include="Service References\ArkyMapServiceReference\configuration.svcinfo" />
     <None Include="Service References\ArkyMapServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ArkyMapsDomainModel\ArkyMapsDomainModel.csproj">
+      <Project>{ecf043f1-31b6-4183-8906-eb21b85eb0a3}</Project>
+      <Name>ArkyMapsDomainModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ArkyMapServiceReference\" />

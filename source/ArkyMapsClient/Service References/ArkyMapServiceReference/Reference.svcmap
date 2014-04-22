@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="89667a43-c41a-4c9a-aa39-ee4160f735ec" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ace25f7e-0614-468d-a5fd-e0a75d7ae656" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,11 @@
     <MetadataSource Address="net.tcp://localhost:8080/MapService/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ArkyMapService.wsdl" MetadataType="Wsdl" ID="2bd1a9e1-7e7f-4fa6-bc91-60e09a8e5a9c" SourceId="1" SourceUrl="net.tcp://localhost:8080/MapService/mex" />
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="200c6758-3a83-4452-8e4f-a651ecefc6cf" SourceId="1" SourceUrl="net.tcp://localhost:8080/MapService/mex" />
-    <MetadataFile FileName="ArkyMapService.xsd" MetadataType="Schema" ID="25f8267f-a0f4-40f7-9a5a-1f3b5d75770e" SourceId="1" SourceUrl="net.tcp://localhost:8080/MapService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="d4590598-452a-4daf-ae4f-1396f9069637" SourceId="1" SourceUrl="net.tcp://localhost:8080/MapService/mex" />
+    <MetadataFile FileName="ArkyMapService.wsdl" MetadataType="Wsdl" ID="c13176a6-1f89-4fd1-8a0d-a416bb62d40d" SourceId="1" SourceUrl="net.tcp://localhost:8080/MapService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="6c6239d3-3f0d-4252-b9be-f9244afccdcc" SourceId="1" SourceUrl="net.tcp://localhost:8080/MapService/mex" />
+    <MetadataFile FileName="ArkyMapService.xsd" MetadataType="Schema" ID="41d9e64c-f531-434a-8b19-0b1d74b04ce4" SourceId="1" SourceUrl="net.tcp://localhost:8080/MapService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="ac65a9e1-2611-4dd4-9989-caee8053c06f" SourceId="1" SourceUrl="net.tcp://localhost:8080/MapService/mex" />
+    <MetadataFile FileName="PhoneService.xsd" MetadataType="Schema" ID="891983ab-92a9-481b-bb87-c2e7e9dbfca6" SourceId="1" SourceUrl="net.tcp://localhost:8080/MapService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

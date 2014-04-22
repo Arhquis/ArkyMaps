@@ -1,15 +1,23 @@
-﻿using System;
+﻿using ArkyMapsDal;
+using ArkyMapsDomainModel;
+using System;
 using System.Collections.Generic;
 using System.ServiceModel;
+using System.Linq;
 
 namespace ArkyMapService
 {
     public class ServiceController
     {
         #region attributes
+        private Logger m_logger;
+
         private static ServiceController m_instance;
+
+        private DalServices m_dalServices;
         private List<ServiceHost> m_services = new List<ServiceHost>();
-        private Dictionary<long, IMapServiceCallback> m_registeredUsers = new Dictionary<long,IMapServiceCallback>();
+
+        private Dictionary<ClientUser, IMapServiceCallback> m_registeredUsers = new Dictionary<ClientUser, IMapServiceCallback>();
         #endregion
 
 
@@ -41,6 +49,10 @@ namespace ArkyMapService
         internal bool StartService()
         {
             bool rvSucceeded = false;
+
+            m_logger = new Logger(Logger.LogMode.Console);
+
+            m_dalServices = new DalServices();
 
             try
             {
@@ -82,28 +94,108 @@ namespace ArkyMapService
 
 
         #region map methods
-        public bool LoginUser(string username, string password, IMapServiceCallback callback)
+        /// <summary>
+        /// Try to log in the <see cref="ClientUser"/> with the given username and password.
+        /// </summary>
+        /// <param name="username">Username of <see cref="ClientUser"/>.</param>
+        /// <param name="password">Password of <see cref="ClientUser"/>.</param>
+        /// <param name="callback">Callback object belongs to <see cref="ClientUser"/>.</param>
+        /// <returns>True if log in succeeded, false otherwise.</returns>
+        public bool LoginClientUser(string username, string password, IMapServiceCallback callback)
         {
-            // if registered user
-            m_registeredUsers.Add(1, callback);
+            bool rvSucceeded = false;
 
-            return true;
+            try
+            {
+                ClientUser user = m_dalServices.UserService.QueryUserByUsernameAndPassword(username, password);
+
+                if (user != null)
+                {
+                    m_registeredUsers.Add(user, callback);
+
+                    rvSucceeded = true;
+
+                    m_logger.WriteLog(Messages.MESSAGE_CLIENT_USER_LOGIN_SUCCEEDED, user.Name, DateTime.Now.ToString());
+                }
+                else
+                {
+                    m_logger.WriteLog(Messages.MESSAGE_CLIENT_USER_LOGIN_FAIlED, user.Name);
+                }
+            }
+            catch (Exception ex)
+            {
+                m_logger.WriteLog(Messages.ERROR_QUERY_CLIENT_USER_BY_NAME_AND_PASSWORD, ex.Message);
+            }
+
+            return rvSucceeded;
         }
 
 
-        public void LogoutUser(long userId)
+        /// <summary>
+        /// Log out the <see cref="ClientUser"/> belongs to user ID.
+        /// </summary>
+        /// <param name="userId"></param>
+        public void LogoutClientUser(long userId)
         {
-            m_registeredUsers.Remove(userId);
+            ClientUser user = m_registeredUsers.Keys.SingleOrDefault(u => u.ID == userId);
+
+            if (user != null)
+            {
+                m_registeredUsers.Remove(user);
+
+                m_logger.WriteLog(Messages.MESSAGE_CLIENT_USER_LOGOUT_SUCCEEDED, user.Name, DateTime.Now.ToString());
+            }
         }
         #endregion
 
 
         #region phone methods
-        public void NewLocation(long userId, long lon, long lat)
+        /// <summary>
+        /// Try to log in the <see cref="ClientUser"/> with the given username and password.
+        /// </summary>
+        /// <param name="username">Username of <see cref="ClientUser"/>.</param>
+        /// <param name="password">Password of <see cref="ClientUser"/>.</param>
+        /// <param name="callback">Callback object belongs to <see cref="ClientUser"/>.</param>
+        /// <returns>The ID of user logged in.</returns>
+        public long LoginPhoneUser(string username, string password)
         {
-            foreach (IMapServiceCallback user in m_registeredUsers.Values)
+            long rvUserId = -1;
+
+            try
             {
-                user.NewLocation(userId, lon, lat);
+                PhoneUser user = m_dalServices.PhoneService.QueryUserByUsernameAndPassword(username, password);
+
+                if (user != null)
+                {
+                    rvUserId = user.ID;
+
+                    m_logger.WriteLog(Messages.MESSAGE_PHONE_USER_LOGIN_SUCCEEDED, user.Name, DateTime.Now.ToString());
+                }
+                else
+                {
+                    m_logger.WriteLog(Messages.MESSAGE_PHONE_USER_LOGIN_FAIlED, user.Name);
+                }
+            }
+            catch (Exception ex)
+            {
+                m_logger.WriteLog(Messages.ERROR_QUERY_PHONE_USER_BY_NAME_AND_PASSWORD, ex.Message);
+            }
+
+            return rvUserId;
+        }
+
+
+        public void NewLocation(long userId, double lon, double lat)
+        {
+            Location location = new Location
+            {
+                PhoneUserId = userId,
+                Value = new LonLat(lon, lat)
+            };
+
+            foreach (IMapServiceCallback userCallback in m_registeredUsers.Values)
+            {
+                userCallback.NewLocation(location);
             }
         }
         #endregion

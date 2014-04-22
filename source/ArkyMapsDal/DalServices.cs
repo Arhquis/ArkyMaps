@@ -6,17 +6,27 @@
     public class DalServices
     {
         #region attributes
-        private UserService m_userService;
+        private ClientUserService m_clientUserService;
+        private PhoneUserService m_phoneUserService;
         #endregion
 
 
         #region properties
         /// <summary>
-        /// Gets the <see cref="UserService"/> service entity.
+        /// Gets the <see cref="ClientUserService"/> service entity.
         /// </summary>
-        public UserService UserService
+        public ClientUserService UserService
         {
-            get { return m_userService; }
+            get { return m_clientUserService; }
+        }
+
+
+        /// <summary>
+        /// Gets the <see cref="PhoneUserService"/> service entity.
+        /// </summary>
+        public PhoneUserService PhoneService
+        {
+            get { return m_phoneUserService; }
         }
         #endregion
 
@@ -27,7 +37,8 @@
         /// </summary>
         public DalServices()
         {
-            m_userService = new UserService();
+            m_clientUserService = new ClientUserService();
+            m_phoneUserService = new PhoneUserService();
         }
         #endregion
     }

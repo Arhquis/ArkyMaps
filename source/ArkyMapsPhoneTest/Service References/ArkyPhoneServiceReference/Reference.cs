@@ -22,10 +22,10 @@ namespace ArkyPhoneTest.ArkyPhoneServiceReference {
         System.Threading.Tasks.Task<long> LoginAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMaps.com/PhoneService/IPhoneService/NewLocation", ReplyAction="ArkyMaps.com/PhoneService/IPhoneService/NewLocationResponse")]
-        void NewLocation(long userId, long lon, long lat);
+        void NewLocation(long userId, long longitude, long latitude);
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMaps.com/PhoneService/IPhoneService/NewLocation", ReplyAction="ArkyMaps.com/PhoneService/IPhoneService/NewLocationResponse")]
-        System.Threading.Tasks.Task NewLocationAsync(long userId, long lon, long lat);
+        System.Threading.Tasks.Task NewLocationAsync(long userId, long longitude, long latitude);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -63,12 +63,12 @@ namespace ArkyPhoneTest.ArkyPhoneServiceReference {
             return base.Channel.LoginAsync(username, password);
         }
         
-        public void NewLocation(long userId, long lon, long lat) {
-            base.Channel.NewLocation(userId, lon, lat);
+        public void NewLocation(long userId, long longitude, long latitude) {
+            base.Channel.NewLocation(userId, longitude, latitude);
         }
         
-        public System.Threading.Tasks.Task NewLocationAsync(long userId, long lon, long lat) {
-            return base.Channel.NewLocationAsync(userId, lon, lat);
+        public System.Threading.Tasks.Task NewLocationAsync(long userId, long longitude, long latitude) {
+            return base.Channel.NewLocationAsync(userId, longitude, latitude);
         }
     }
 }

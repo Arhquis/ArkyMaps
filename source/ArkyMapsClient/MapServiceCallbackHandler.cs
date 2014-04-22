@@ -1,5 +1,6 @@
 ﻿using ArkyMapsClient.ArkyMapServiceReference;
 using ArkyMapsClient.Controls;
+using ArkyMapsDomainModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +11,17 @@ namespace ArkyMapsClient
     public class MapServiceCallbackHandler : IMapServiceCallback
     {
         public event EventHandler<LocationSentEventArgs> LocationSent;
-        public void SendMessage(string message)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void NewLocation(long userId, long lon, long lat)
+
+        /// <summary>
+        /// Send new <see cref="Location"/> entity to clients.
+        /// </summary>
+        /// <param name="location">The new <see cref="Location"/>.</param>
+        public void NewLocation(Location location)
         {
             if (LocationSent != null)
             {
-                LocationSent(this, new LocationSentEventArgs { UserId = userId, Lon = lon, Lat = lat });
+                LocationSent(this, new LocationSentEventArgs { Location = location });
             }
         }
     }

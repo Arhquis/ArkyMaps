@@ -19,8 +19,8 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:long" />
-        <xs:element minOccurs="0" name="lon" type="xs:long" />
-        <xs:element minOccurs="0" name="lat" type="xs:long" />
+        <xs:element minOccurs="0" name="longitude" type="xs:long" />
+        <xs:element minOccurs="0" name="latitude" type="xs:long" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

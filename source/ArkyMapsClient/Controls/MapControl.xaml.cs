@@ -40,7 +40,7 @@ namespace ArkyMapsClient.Controls
         {
             string formatString = "{0} - {1} - {2}";
 
-            Console.WriteLine(string.Format(formatString, e.UserId, e.Lon, e.Lat));
+            Console.WriteLine(string.Format(formatString, e.Location.PhoneUserId, e.Location.Value.Longitude, e.Location.Value.Latitude));
         }
     }
 }
