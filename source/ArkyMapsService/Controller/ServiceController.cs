@@ -82,7 +82,7 @@ namespace ArkyMapService
 
 
         #region map methods
-        public bool LoginUser(string userName, string password, IMapServiceCallback callback)
+        public bool LoginUser(string username, string password, IMapServiceCallback callback)
         {
             // if registered user
             m_registeredUsers.Add(1, callback);

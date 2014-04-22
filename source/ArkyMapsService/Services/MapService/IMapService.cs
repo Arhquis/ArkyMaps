@@ -6,7 +6,7 @@ namespace ArkyMapService
     public interface IMapService
     {
         [OperationContract]
-        bool Login(string userName, string password);
+        bool Login(string username, string password);
 
 
         [OperationContract]

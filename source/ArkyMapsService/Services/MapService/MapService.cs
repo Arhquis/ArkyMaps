@@ -15,11 +15,11 @@ namespace ArkyMapService
 
 
         #region IMapService members
-        public bool Login(string userName, string password)
+        public bool Login(string username, string password)
         {
             IMapServiceCallback callback = OperationContext.Current.GetCallbackChannel<IMapServiceCallback>();
 
-            bool isSucceeded = ServiceController.Instance.LoginUser(userName, password, callback);
+            bool isSucceeded = ServiceController.Instance.LoginUser(username, password, callback);
 
             if (isSucceeded)
             {

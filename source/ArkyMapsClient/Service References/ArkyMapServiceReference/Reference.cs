@@ -16,10 +16,10 @@ namespace ArkyMapsClient.ArkyMapServiceReference {
     public interface IMapService {
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/Login", ReplyAction="ArkyMapService/IMapService/LoginResponse")]
-        bool Login(string userName, string password);
+        bool Login(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/Login", ReplyAction="ArkyMapService/IMapService/LoginResponse")]
-        System.Threading.Tasks.Task<bool> LoginAsync(string userName, string password);
+        System.Threading.Tasks.Task<bool> LoginAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/Logout", ReplyAction="ArkyMapService/IMapService/LogoutResponse")]
         bool Logout(long userId);
@@ -63,12 +63,12 @@ namespace ArkyMapsClient.ArkyMapServiceReference {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public bool Login(string userName, string password) {
-            return base.Channel.Login(userName, password);
+        public bool Login(string username, string password) {
+            return base.Channel.Login(username, password);
         }
         
-        public System.Threading.Tasks.Task<bool> LoginAsync(string userName, string password) {
-            return base.Channel.LoginAsync(userName, password);
+        public System.Threading.Tasks.Task<bool> LoginAsync(string username, string password) {
+            return base.Channel.LoginAsync(username, password);
         }
         
         public bool Logout(long userId) {

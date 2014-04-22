@@ -6,7 +6,7 @@ namespace ArkyMapService
     public interface IPhoneService
     {
         [OperationContract]
-        long Login(string userName, string password);
+        long Login(string username, string password);
 
 
         [OperationContract]

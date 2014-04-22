@@ -20,7 +20,7 @@ namespace ArkyMapService
 
 
         #region IPhoneService members
-        public long Login(string userName, string password)
+        public long Login(string username, string password)
         {
             Console.WriteLine("Phone login happened");
 

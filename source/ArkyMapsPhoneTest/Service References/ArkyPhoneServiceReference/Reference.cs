@@ -16,10 +16,10 @@ namespace ArkyPhoneTest.ArkyPhoneServiceReference {
     public interface IPhoneService {
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMaps.com/PhoneService/IPhoneService/Login", ReplyAction="ArkyMaps.com/PhoneService/IPhoneService/LoginResponse")]
-        long Login(string userName, string password);
+        long Login(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMaps.com/PhoneService/IPhoneService/Login", ReplyAction="ArkyMaps.com/PhoneService/IPhoneService/LoginResponse")]
-        System.Threading.Tasks.Task<long> LoginAsync(string userName, string password);
+        System.Threading.Tasks.Task<long> LoginAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMaps.com/PhoneService/IPhoneService/NewLocation", ReplyAction="ArkyMaps.com/PhoneService/IPhoneService/NewLocationResponse")]
         void NewLocation(long userId, long lon, long lat);
@@ -55,12 +55,12 @@ namespace ArkyPhoneTest.ArkyPhoneServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public long Login(string userName, string password) {
-            return base.Channel.Login(userName, password);
+        public long Login(string username, string password) {
+            return base.Channel.Login(username, password);
         }
         
-        public System.Threading.Tasks.Task<long> LoginAsync(string userName, string password) {
-            return base.Channel.LoginAsync(userName, password);
+        public System.Threading.Tasks.Task<long> LoginAsync(string username, string password) {
+            return base.Channel.LoginAsync(username, password);
         }
         
         public void NewLocation(long userId, long lon, long lat) {
