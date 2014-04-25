@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[PhoneUser]
+(
+    [ID] BIGINT IDENTITY NOT NULL CONSTRAINT PK_PhoneUser PRIMARY KEY,
+    [Name] VARCHAR(50) NOT NULL,
+    [Password] VARCHAR(50) NOT NULL
+)

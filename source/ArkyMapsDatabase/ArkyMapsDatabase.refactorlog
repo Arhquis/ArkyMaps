@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="5e39d568-0d8d-47d8-97ec-ec29e21a7bc3" ChangeDateTime="04/25/2014 20:16:41">
+    <Property Name="ElementName" Value="[dbo].[PhoneUser].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PhoneUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="83f80f09-cd9a-482d-a029-fa9e5dadee58" ChangeDateTime="04/25/2014 20:18:24">
+    <Property Name="ElementName" Value="[dbo].[CientUser].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[CientUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="dacfaf9f-8494-4d66-a688-8bc84e2e5b5e" ChangeDateTime="04/25/2014 20:20:02">
+    <Property Name="ElementName" Value="[dbo].[Location].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Location]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bf338e52-c082-49e6-9f0a-4134e7407770" ChangeDateTime="04/25/2014 20:21:18">
+    <Property Name="ElementName" Value="[dbo].[FK_Location_PhoneUser]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Location]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Location_PhoneUser(ID)]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="697ee4b0-b268-4d0b-811f-7e73ac4c923d" ChangeDateTime="04/25/2014 20:21:25">
+    <Property Name="ElementName" Value="[dbo].[FK_Location_PhoneUser(ID)]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Location]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Location_PhoneUser(]" />
+  </Operation>
+</Operations>
