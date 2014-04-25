@@ -25,7 +25,7 @@ namespace ArkyPhoneTest
 
             client.Open();
 
-            long valami = client.Login("a", "b");
+            long valami = client.Login("test2", "test2");
 
             thread = new Thread(Run);
 

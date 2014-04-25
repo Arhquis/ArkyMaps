@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsService", "ArkyMaps
 		{ECF043F1-31B6-4183-8906-EB21B85EB0A3} = {ECF043F1-31B6-4183-8906-EB21B85EB0A3}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsDal", "ArkyMapsDal\ArkyMapsDal.csproj", "{5368113C-1D91-4700-99C4-61A4DEF9442B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsDal", "ArkyMapsDal\ArkyMapsDal\ArkyMapsDal.csproj", "{5368113C-1D91-4700-99C4-61A4DEF9442B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsDomainModel", "ArkyMapsDomainModel\ArkyMapsDomainModel.csproj", "{ECF043F1-31B6-4183-8906-EB21B85EB0A3}"
 EndProject

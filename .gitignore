@@ -4,3 +4,10 @@
 *.sln.Cache
 bin
 obj
+
+# Database project
+*.dbmdl
+*.sqlproj.user
+
+# NuGet 
+/sources/packages

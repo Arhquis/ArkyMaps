@@ -15,7 +15,7 @@
         /// <summary>
         /// Gets the <see cref="ClientUserService"/> service entity.
         /// </summary>
-        public ClientUserService UserService
+        public ClientUserService ClientUserService
         {
             get { return m_clientUserService; }
         }
@@ -24,7 +24,7 @@
         /// <summary>
         /// Gets the <see cref="PhoneUserService"/> service entity.
         /// </summary>
-        public PhoneUserService PhoneService
+        public PhoneUserService PhoneUserService
         {
             get { return m_phoneUserService; }
         }

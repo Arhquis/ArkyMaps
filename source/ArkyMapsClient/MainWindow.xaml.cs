@@ -38,7 +38,7 @@ namespace ArkyMapsClient
 
             client.Open();
 
-            client.Login("a", "b");
+            client.Login("test", "test");
 
             m_mapControl.LoadMapControl(handler);
         }

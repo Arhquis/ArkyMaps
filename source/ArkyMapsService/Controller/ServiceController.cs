@@ -2,8 +2,10 @@
 using ArkyMapsDomainModel;
 using System;
 using System.Collections.Generic;
-using System.ServiceModel;
 using System.Linq;
+using System.ServiceModel;
+
+using DM = ArkyMapsDomainModel;
 
 namespace ArkyMapService
 {
@@ -17,7 +19,7 @@ namespace ArkyMapService
         private DalServices m_dalServices;
         private List<ServiceHost> m_services = new List<ServiceHost>();
 
-        private Dictionary<ClientUser, IMapServiceCallback> m_registeredUsers = new Dictionary<ClientUser, IMapServiceCallback>();
+        private Dictionary<DM.ClientUser, IMapServiceCallback> m_registeredUsers = new Dictionary<DM.ClientUser, IMapServiceCallback>();
         #endregion
 
 
@@ -107,7 +109,7 @@ namespace ArkyMapService
 
             try
             {
-                ClientUser user = m_dalServices.UserService.QueryUserByUsernameAndPassword(username, password);
+                DM.ClientUser user = m_dalServices.ClientUserService.QueryUserByUsernameAndPassword(username, password);
 
                 if (user != null)
                 {
@@ -119,7 +121,7 @@ namespace ArkyMapService
                 }
                 else
                 {
-                    m_logger.WriteLog(Messages.MESSAGE_CLIENT_USER_LOGIN_FAIlED, user.Name);
+                    m_logger.WriteLog(Messages.MESSAGE_CLIENT_USER_LOGIN_FAIlED, username);
                 }
             }
             catch (Exception ex)
@@ -137,7 +139,7 @@ namespace ArkyMapService
         /// <param name="userId"></param>
         public void LogoutClientUser(long userId)
         {
-            ClientUser user = m_registeredUsers.Keys.SingleOrDefault(u => u.ID == userId);
+            DM.ClientUser user = m_registeredUsers.Keys.SingleOrDefault(u => u.ID == userId);
 
             if (user != null)
             {
@@ -163,7 +165,7 @@ namespace ArkyMapService
 
             try
             {
-                PhoneUser user = m_dalServices.PhoneService.QueryUserByUsernameAndPassword(username, password);
+                DM.PhoneUser user = m_dalServices.PhoneUserService.QueryUserByUsernameAndPassword(username, password);
 
                 if (user != null)
                 {
@@ -173,7 +175,7 @@ namespace ArkyMapService
                 }
                 else
                 {
-                    m_logger.WriteLog(Messages.MESSAGE_PHONE_USER_LOGIN_FAIlED, user.Name);
+                    m_logger.WriteLog(Messages.MESSAGE_PHONE_USER_LOGIN_FAIlED, username);
                 }
             }
             catch (Exception ex)
@@ -187,7 +189,7 @@ namespace ArkyMapService
 
         public void NewLocation(long userId, double lon, double lat)
         {
-            Location location = new Location
+            DM.Location location = new DM.Location
             {
                 PhoneUserId = userId,
                 Value = new LonLat(lon, lat)

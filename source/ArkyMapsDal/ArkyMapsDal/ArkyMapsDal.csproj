@@ -30,8 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,16 +46,65 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArkyMapsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArkyMapsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArkyMapsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArkyMapsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArkyMapsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArkyMapsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ClientUser.cs">
+      <DependentUpon>ArkyMapsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DalServices.cs" />
+    <Compile Include="Location.cs">
+      <DependentUpon>ArkyMapsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mappers\EdmToDmMapper.cs" />
+    <Compile Include="PhoneUser.cs">
+      <DependentUpon>ArkyMapsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ClientUserService.cs" />
     <Compile Include="Services\PhoneUserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ArkyMapsDomainModel\ArkyMapsDomainModel.csproj">
+    <ProjectReference Include="..\..\ArkyMapsDomainModel\ArkyMapsDomainModel.csproj">
       <Project>{ecf043f1-31b6-4183-8906-eb21b85eb0a3}</Project>
       <Name>ArkyMapsDomainModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ArkyMapsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ArkyMapsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="ArkyMapsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ArkyMapsModel.edmx</DependentUpon>
+      <LastGenOutput>ArkyMapsModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="ArkyMapsModel.edmx.diagram">
+      <DependentUpon>ArkyMapsModel.edmx</DependentUpon>
+    </None>
+    <None Include="ArkyMapsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ArkyMapsModel.edmx</DependentUpon>
+      <LastGenOutput>ArkyMapsModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

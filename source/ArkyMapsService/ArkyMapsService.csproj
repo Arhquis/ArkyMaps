@@ -64,7 +64,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ArkyMapsDal\ArkyMapsDal.csproj">
+    <ProjectReference Include="..\ArkyMapsDal\ArkyMapsDal\ArkyMapsDal.csproj">
       <Project>{5368113c-1d91-4700-99c4-61a4def9442b}</Project>
       <Name>ArkyMapsDal</Name>
     </ProjectReference>
