@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[ClientUser]
+(
+    [ID] BIGINT IDENTITY NOT NULL CONSTRAINT PK_ClientUser PRIMARY KEY,
+    [Name] VARCHAR(50) NOT NULL,
+    [Password] VARCHAR(50) NOT NULL
+)
