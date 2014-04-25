@@ -10,4 +10,4 @@ obj
 *.sqlproj.user
 
 # NuGet 
-/sources/packages
+packages
