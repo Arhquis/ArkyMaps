@@ -1,4 +1,4 @@
-﻿using System;
+﻿using ArkyMapsDomainModel;
 using System.ServiceModel;
 
 namespace ArkyMapService
@@ -37,11 +37,10 @@ namespace ArkyMapService
         /// Register a new location for user belongs to user ID.
         /// </summary>
         /// <param name="userId">ID of user.</param>
-        /// <param name="longitude">Longitude value of location.</param>
-        /// <param name="latitude">Latitiude value of location.</param>
-        public void NewLocation(long userId, long lon, long lat)
+        /// <param name="location">Location value.</param>
+        public void NewLocation(long userId, LonLat location)
         {
-            ServiceController.Instance.NewLocation(userId, lon, lat);
+            ServiceController.Instance.NewLocation(userId, location);
         }
         #endregion
     }

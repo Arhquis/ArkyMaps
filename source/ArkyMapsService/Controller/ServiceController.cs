@@ -187,12 +187,17 @@ namespace ArkyMapService
         }
 
 
-        public void NewLocation(long userId, double lon, double lat)
+        /// <summary>
+        /// Saves incoming new location and send it to every connected map clients.
+        /// </summary>
+        /// <param name="userId">ID of user sent location data.</param>
+        /// <param name="lonLat">Location value.</param>
+        public void NewLocation(long userId, LonLat lonLat)
         {
             DM.Location location = new DM.Location
             {
                 PhoneUserId = userId,
-                Value = new LonLat(lon, lat)
+                Value = lonLat
             };
 
             foreach (IMapServiceCallback userCallback in m_registeredUsers.Values)

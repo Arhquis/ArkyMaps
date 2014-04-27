@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ArkyPhoneTest.ArkyPhoneServiceReference {
+namespace ArkyMapsPhoneSimulator.ArkyPhoneServiceReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -22,19 +22,19 @@ namespace ArkyPhoneTest.ArkyPhoneServiceReference {
         System.Threading.Tasks.Task<long> LoginAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMaps.com/PhoneService/IPhoneService/NewLocation", ReplyAction="ArkyMaps.com/PhoneService/IPhoneService/NewLocationResponse")]
-        void NewLocation(long userId, long longitude, long latitude);
+        void NewLocation(long userId, ArkyMapsDomainModel.LonLat location);
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMaps.com/PhoneService/IPhoneService/NewLocation", ReplyAction="ArkyMaps.com/PhoneService/IPhoneService/NewLocationResponse")]
-        System.Threading.Tasks.Task NewLocationAsync(long userId, long longitude, long latitude);
+        System.Threading.Tasks.Task NewLocationAsync(long userId, ArkyMapsDomainModel.LonLat location);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IPhoneServiceChannel : ArkyPhoneTest.ArkyPhoneServiceReference.IPhoneService, System.ServiceModel.IClientChannel {
+    public interface IPhoneServiceChannel : ArkyMapsPhoneSimulator.ArkyPhoneServiceReference.IPhoneService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class PhoneServiceClient : System.ServiceModel.ClientBase<ArkyPhoneTest.ArkyPhoneServiceReference.IPhoneService>, ArkyPhoneTest.ArkyPhoneServiceReference.IPhoneService {
+    public partial class PhoneServiceClient : System.ServiceModel.ClientBase<ArkyMapsPhoneSimulator.ArkyPhoneServiceReference.IPhoneService>, ArkyMapsPhoneSimulator.ArkyPhoneServiceReference.IPhoneService {
         
         public PhoneServiceClient() {
         }
@@ -63,12 +63,12 @@ namespace ArkyPhoneTest.ArkyPhoneServiceReference {
             return base.Channel.LoginAsync(username, password);
         }
         
-        public void NewLocation(long userId, long longitude, long latitude) {
-            base.Channel.NewLocation(userId, longitude, latitude);
+        public void NewLocation(long userId, ArkyMapsDomainModel.LonLat location) {
+            base.Channel.NewLocation(userId, location);
         }
         
-        public System.Threading.Tasks.Task NewLocationAsync(long userId, long longitude, long latitude) {
-            return base.Channel.NewLocationAsync(userId, longitude, latitude);
+        public System.Threading.Tasks.Task NewLocationAsync(long userId, ArkyMapsDomainModel.LonLat location) {
+            return base.Channel.NewLocationAsync(userId, location);
         }
     }
 }
