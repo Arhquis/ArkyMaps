@@ -122,7 +122,7 @@ namespace ArkyMapsPhoneSimulator
 
                     index++;
 
-                    if (index > m_locations.Count)
+                    if (index >= m_locations.Count)
                     {
                         index = 0;
                     }
