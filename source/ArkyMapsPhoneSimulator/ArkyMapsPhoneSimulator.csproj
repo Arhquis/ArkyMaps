@@ -90,7 +90,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ArkyMapsDomainModel\ArkyMapsDomainModel.csproj">
+    <ProjectReference Include="..\ArkyMapsDomainModel\ArkyMapsDomainModel.csproj">
       <Project>{ecf043f1-31b6-4183-8906-eb21b85eb0a3}</Project>
       <Name>ArkyMapsDomainModel</Name>
     </ProjectReference>

@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsPhoneSimulator", "ArkyMapsPhoneSimulator\ArkyMapsPhoneSimulator.csproj", "{F2745551-4D22-4E52-91CB-06B7CF09BD8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsDomainModel", "..\ArkyMapsDomainModel\ArkyMapsDomainModel.csproj", "{ECF043F1-31B6-4183-8906-EB21B85EB0A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsDomainModel", "ArkyMapsDomainModel\ArkyMapsDomainModel.csproj", "{ECF043F1-31B6-4183-8906-EB21B85EB0A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
