@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data access layer", "Data a
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsDal.UnitTest", "ArkyMapsDal\ArkyMapsDal.UnitTest\ArkyMapsDal.UnitTest.csproj", "{981FDC52-780E-4E7D-913E-6898BFCE28B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsClient", "ArkyMapsClient\ArkyMapsClient.csproj", "{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D}"
-EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ArkyMapsDatabase", "ArkyMapsDatabase\ArkyMapsDatabase.sqlproj", "{8A037E94-F381-45CE-9066-919E845F302B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsDomainModel", "ArkyMapsDomainModel\ArkyMapsDomainModel.csproj", "{ECF043F1-31B6-4183-8906-EB21B85EB0A3}"
@@ -18,6 +16,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsPhoneSimulator", "ArkyMapsPhoneSimulator\ArkyMapsPhoneSimulator.csproj", "{F2745551-4D22-4E52-91CB-06B7CF09BD8F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsService", "ArkyMapsService\ArkyMapsService.csproj", "{E25A248E-12BF-44D7-A71B-A969C0320B46}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Map client", "Map client", "{A8B8931C-1D72-49D8-972F-1C5F63C2A2A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsClient", "ArkyMapsClient\ArkyMapsClient\ArkyMapsClient.csproj", "{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenLayersMapControl", "ArkyMapsClient\OpenLayersMapControl\OpenLayersMapControl.csproj", "{575377A9-173E-4A2B-88A7-6F57E403F52A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +37,6 @@ Global
 		{981FDC52-780E-4E7D-913E-6898BFCE28B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{981FDC52-780E-4E7D-913E-6898BFCE28B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{981FDC52-780E-4E7D-913E-6898BFCE28B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8A037E94-F381-45CE-9066-919E845F302B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8A037E94-F381-45CE-9066-919E845F302B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A037E94-F381-45CE-9066-919E845F302B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -55,6 +55,14 @@ Global
 		{E25A248E-12BF-44D7-A71B-A969C0320B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E25A248E-12BF-44D7-A71B-A969C0320B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E25A248E-12BF-44D7-A71B-A969C0320B46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{575377A9-173E-4A2B-88A7-6F57E403F52A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{575377A9-173E-4A2B-88A7-6F57E403F52A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{575377A9-173E-4A2B-88A7-6F57E403F52A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{575377A9-173E-4A2B-88A7-6F57E403F52A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,5 +70,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5368113C-1D91-4700-99C4-61A4DEF9442B} = {942E7397-FABA-462D-B33A-2757EEC8CF8F}
 		{981FDC52-780E-4E7D-913E-6898BFCE28B0} = {942E7397-FABA-462D-B33A-2757EEC8CF8F}
+		{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D} = {A8B8931C-1D72-49D8-972F-1C5F63C2A2A7}
+		{575377A9-173E-4A2B-88A7-6F57E403F52A} = {A8B8931C-1D72-49D8-972F-1C5F63C2A2A7}
 	EndGlobalSection
 EndGlobal

@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsClient", "ArkyMapsClient\ArkyMapsClient.csproj", "{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsClient", "ArkyMapsClient\ArkyMapsClient\ArkyMapsClient.csproj", "{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArkyMapsDomainModel", "ArkyMapsDomainModel\ArkyMapsDomainModel.csproj", "{ECF043F1-31B6-4183-8906-EB21B85EB0A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Map client", "Map client", "{3CC9E723-DA0F-4579-A426-BF7ACAB77A86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenLayersMapControl", "ArkyMapsClient\OpenLayersMapControl\OpenLayersMapControl.csproj", "{575377A9-173E-4A2B-88A7-6F57E403F52A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +25,16 @@ Global
 		{ECF043F1-31B6-4183-8906-EB21B85EB0A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECF043F1-31B6-4183-8906-EB21B85EB0A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECF043F1-31B6-4183-8906-EB21B85EB0A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{575377A9-173E-4A2B-88A7-6F57E403F52A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{575377A9-173E-4A2B-88A7-6F57E403F52A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{575377A9-173E-4A2B-88A7-6F57E403F52A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{575377A9-173E-4A2B-88A7-6F57E403F52A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D} = {3CC9E723-DA0F-4579-A426-BF7ACAB77A86}
+		{575377A9-173E-4A2B-88A7-6F57E403F52A} = {3CC9E723-DA0F-4579-A426-BF7ACAB77A86}
 	EndGlobalSection
 EndGlobal

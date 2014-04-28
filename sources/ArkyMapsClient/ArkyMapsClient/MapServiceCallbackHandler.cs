@@ -1,18 +1,23 @@
 ﻿using ArkyMapsClient.ArkyMapServiceReference;
-using ArkyMapsClient.Controls;
 using ArkyMapsDomainModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ArkyMapsClient
 {
+    /// <summary>
+    /// The class handles map service callbacks.
+    /// </summary>
     public class MapServiceCallbackHandler : IMapServiceCallback
     {
+        #region events
+        /// <summary>
+        /// Fires if a new location has been sent by map service.
+        /// </summary>
         public event EventHandler<LocationSentEventArgs> LocationSent;
+        #endregion
 
 
+        #region IMapServiceCallback members
         /// <summary>
         /// Send new <see cref="Location"/> entity to clients.
         /// </summary>
@@ -24,5 +29,6 @@ namespace ArkyMapsClient
                 LocationSent(this, new LocationSentEventArgs { Location = location });
             }
         }
+        #endregion
     }
 }
