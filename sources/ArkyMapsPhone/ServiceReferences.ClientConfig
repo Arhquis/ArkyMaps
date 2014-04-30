@@ -1,0 +1,17 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_IPhoneService" maxBufferSize="2147483647"
+                    maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://192.168.0.218:8081/PhoneService/service"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IPhoneService"
+                contract="ArkyPhoneServiceReference.IPhoneService" name="BasicHttpBinding_IPhoneService" />
+        </client>
+    </system.serviceModel>
+</configuration>
