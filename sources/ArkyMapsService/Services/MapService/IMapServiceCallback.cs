@@ -14,6 +14,5 @@ namespace ArkyMapService
         /// <param name="location">The new <see cref="Location"/>.</param>
         [OperationContract(IsOneWay = true)]
         void NewLocation(Location location);
-
     }
 }

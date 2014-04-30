@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3DD3FC75-DE17-44D8-AE3B-C47C7AC3C04D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ArkyMapsClient</RootNamespace>
     <AssemblyName>ArkyMapsClient</AssemblyName>
@@ -61,8 +61,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="LocationSentEventArgs.cs" />
-    <Compile Include="MapServiceCallbackHandler.cs" />
+    <Compile Include="ServiceCallbackHandler\LocationSentEventArgs.cs" />
+    <Compile Include="ServiceCallbackHandler\MapServiceCallbackHandler.cs" />
+    <Compile Include="Utilities\QueueWorker.cs" />
     <Compile Include="Service References\ArkyMapServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -107,6 +108,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\ArkyMapsDomainModel.PhoneUser.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

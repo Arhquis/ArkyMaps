@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArkyMapsDomainModel;
+using System;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
@@ -78,6 +79,27 @@ namespace OpenLayersMapControl
             {
                 MapLoaded(this, new EventArgs());
             }
+        }
+        #endregion
+
+
+        #region map user
+        /// <summary>
+        /// Creates a new <see cref="MapUser"/> and adds it to the map.
+        /// </summary>
+        /// <param name="id">The id of the new <see cref="MapUser"/> entity.</param>
+        /// <param name="name">The name of the new <see cref="MapUser"/> entity.</param>
+        /// <param name="location">The name of the new <see cref="MapUser"/> entity where it will be placed.</param>
+        /// <returns>The newly created <see cref="MapUser"/> object.</returns>
+        public MapUser AddMapUserToMap(long id, string name, LonLat location)
+        {
+            MapUser rvMapUser;
+
+            rvMapUser = new MapUser(id, name, location, m_scriptObject);
+
+            m_scriptObject.AddMapUser(rvMapUser);
+
+            return rvMapUser;
         }
         #endregion
     }

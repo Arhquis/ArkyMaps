@@ -61,6 +61,15 @@ namespace ArkyMapService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to query phone user by its ID {0}..
+        /// </summary>
+        internal static string ERROR_QUERY_CLIENT_USER_BY_ID {
+            get {
+                return ResourceManager.GetString("ERROR_QUERY_CLIENT_USER_BY_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to query client user by its name and password {0}..
         /// </summary>
         internal static string ERROR_QUERY_CLIENT_USER_BY_NAME_AND_PASSWORD {
@@ -106,7 +115,7 @@ namespace ArkyMapService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Client user {0} logged out at {1}..
+        ///   Looks up a localized string similar to Client user ID {0} logged out at {1}..
         /// </summary>
         internal static string MESSAGE_CLIENT_USER_LOGOUT_SUCCEEDED {
             get {

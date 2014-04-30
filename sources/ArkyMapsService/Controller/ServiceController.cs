@@ -19,7 +19,7 @@ namespace ArkyMapService
         private DalServices m_dalServices;
         private List<ServiceHost> m_services = new List<ServiceHost>();
 
-        private Dictionary<DM.ClientUser, IMapServiceCallback> m_registeredUsers = new Dictionary<DM.ClientUser, IMapServiceCallback>();
+        private Dictionary<long, IMapServiceCallback> m_registeredUsers = new Dictionary<long, IMapServiceCallback>();
         #endregion
 
 
@@ -113,7 +113,13 @@ namespace ArkyMapService
 
                 if (user != null)
                 {
-                    m_registeredUsers.Add(user, callback);
+                    // debug purpose only
+                    if (m_registeredUsers.ContainsKey(user.ID))
+                    {
+                        m_registeredUsers.Remove(user.ID);
+                    }
+
+                    m_registeredUsers.Add(user.ID, callback);
 
                     rvSucceeded = true;
 
@@ -139,14 +145,36 @@ namespace ArkyMapService
         /// <param name="userId"></param>
         public void LogoutClientUser(long userId)
         {
-            DM.ClientUser user = m_registeredUsers.Keys.SingleOrDefault(u => u.ID == userId);
+            //DM.ClientUser user = m_registeredUsers.Keys.SingleOrDefault(u => u.ID == userId);
 
-            if (user != null)
+            if (m_registeredUsers.ContainsKey(userId))
             {
-                m_registeredUsers.Remove(user);
+                m_registeredUsers.Remove(userId);
 
-                m_logger.WriteLog(Messages.MESSAGE_CLIENT_USER_LOGOUT_SUCCEEDED, user.Name, DateTime.Now.ToString());
+                m_logger.WriteLog(Messages.MESSAGE_CLIENT_USER_LOGOUT_SUCCEEDED, userId.ToString(), DateTime.Now.ToString());
             }
+        }
+
+
+        /// <summary>
+        /// Query <see cref="DM.PhoneUser"/> entity by ID.
+        /// </summary>
+        /// <param name="userId">ID of a <see cref="DM.PhoneUser"/> entity.</param>
+        /// <returns>The <see cref="DM.PhoneUser"/> entity with the specififed ID.</returns>
+        public DM.PhoneUser QueryPhoneUserById(long userId)
+        {
+            DM.PhoneUser rvPhoneUser = null;
+
+            try
+            {
+                rvPhoneUser = m_dalServices.PhoneUserService.QueryPhoneUserById(userId);
+            }
+            catch (Exception ex)
+            {
+                m_logger.WriteLog(Messages.ERROR_QUERY_CLIENT_USER_BY_ID, ex.Message);
+            }
+
+            return rvPhoneUser;
         }
         #endregion
 
@@ -200,9 +228,18 @@ namespace ArkyMapService
                 Value = lonLat
             };
 
+            Console.WriteLine(string.Format("Location data sent. (UserId: {0}, Location: {1}", userId, lonLat));
+
             foreach (IMapServiceCallback userCallback in m_registeredUsers.Values)
             {
-                userCallback.NewLocation(location);
+                try
+                {
+                    userCallback.NewLocation(location);
+                }
+                catch (Exception)
+                {
+                    
+                }
             }
         }
         #endregion

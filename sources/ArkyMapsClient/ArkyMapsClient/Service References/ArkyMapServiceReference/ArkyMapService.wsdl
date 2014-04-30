@@ -19,6 +19,12 @@
   <wsdl:message name="IMapService_Logout_OutputMessage">
     <wsdl:part name="parameters" element="tns:LogoutResponse" />
   </wsdl:message>
+  <wsdl:message name="IMapService_QueryPhoneUserById_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryPhoneUserById" />
+  </wsdl:message>
+  <wsdl:message name="IMapService_QueryPhoneUserById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryPhoneUserByIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IMapService_NewLocation_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:NewLocation" />
   </wsdl:message>
@@ -30,6 +36,10 @@
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Logout">
       <wsdl:input wsaw:Action="ArkyMapService/IMapService/Logout" message="tns:IMapService_Logout_InputMessage" />
       <wsdl:output wsaw:Action="ArkyMapService/IMapService/LogoutResponse" message="tns:IMapService_Logout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="QueryPhoneUserById">
+      <wsdl:input wsaw:Action="ArkyMapService/IMapService/QueryPhoneUserById" message="tns:IMapService_QueryPhoneUserById_InputMessage" />
+      <wsdl:output wsaw:Action="ArkyMapService/IMapService/QueryPhoneUserByIdResponse" message="tns:IMapService_QueryPhoneUserById_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="NewLocation">
       <wsdl:output wsaw:Action="ArkyMapService/IMapService/NewLocation" message="tns:IMapService_NewLocation_OutputCallbackMessage" />

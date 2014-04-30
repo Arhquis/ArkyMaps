@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using ArkyMapsDomainModel;
+using System.Runtime.InteropServices;
 using System.Windows.Controls;
 
 namespace OpenLayersMapControl
@@ -10,7 +11,10 @@ namespace OpenLayersMapControl
     public class ScriptObject
     {
         #region constants
-        private const string OL_LOAD_MAP = "Load";
+        private const string OL_LOAD_MAP = "LoadMap";
+        private const string OL_GET_OPEN_LAYERS_LON_LAT = "GetOpenLayersLonLat";
+        private const string OL_ADD_MAP_USER = "AddMapUser";
+        private const string OL_MOVE_MAP_USER = "MoveMapUser";
         #endregion
 
 
@@ -25,7 +29,7 @@ namespace OpenLayersMapControl
         /// Initializes a new instence of the <see cref="ScriptObject"/> class.
         /// </summary>
         /// <param name="mapControl"><see cref="MapControl"/> instance controls the map.</param>
-        /// <param name="webBrowser">Webbroser shows the map.</param>
+        /// <param name="webBrowser">Webbrowser shows the map.</param>
         public ScriptObject(MapControl mapControl, WebBrowser webBrowser)
         {
             m_mapControl = mapControl;
@@ -45,7 +49,7 @@ namespace OpenLayersMapControl
 
 
         /// <summary>
-        /// Calls from script if if map loaded.
+        /// Calls from script if map loaded.
         /// </summary>
         public void MapLoadedCallback()
         {
@@ -54,7 +58,53 @@ namespace OpenLayersMapControl
         #endregion
 
 
+        #region map user
+        /// <summary>
+        /// Adds a <see cref="MapUser"/> to the map.
+        /// </summary>
+        /// <param name="mapUser">A <see cref="MapUser"/> to add.</param>
+        public void AddMapUser(MapUser mapUser)
+        {
+            mapUser.BrowserObject = InvokeScript(
+                OL_ADD_MAP_USER,
+                mapUser.ID,
+                mapUser.Name,
+                GetOpenLayersLonLat(mapUser.Location));
+        }
+
+
+        /// <summary>
+        /// Moves the <see cref="MapUser"/> to its location on the map.
+        /// </summary>
+        /// <param name="mapObject"></param>
+        public void MoveMapObject(MapUser mapObject)
+        {
+            InvokeScript(
+                OL_MOVE_MAP_USER,
+                mapObject.BrowserObject,
+                GetOpenLayersLonLat(mapObject.Location));
+        }
+        #endregion
+
+
         #region utility
+        /// <summary>
+        /// Transforms a <see cref="LonLat"/> instance to the OpenLayers representation.
+        /// </summary>
+        /// <param name="location">The <see cref="LonLat"/> instance to transform.</param>
+        /// <returns>The transformed OpenLayers location.</returns>
+        private object GetOpenLayersLonLat(LonLat location)
+        {
+            object rvOpenLayersLocation;
+
+            rvOpenLayersLocation = InvokeScript(
+                OL_GET_OPEN_LAYERS_LON_LAT,
+                location.Longitude, location.Latitude);
+
+            return rvOpenLayersLocation;
+        }
+
+
         /// <summary>
         /// Invokes the specified JavaScript method with the passed arguments.
         /// </summary>

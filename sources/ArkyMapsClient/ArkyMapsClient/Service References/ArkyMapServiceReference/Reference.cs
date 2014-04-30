@@ -26,6 +26,12 @@ namespace ArkyMapsClient.ArkyMapServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/Logout", ReplyAction="ArkyMapService/IMapService/LogoutResponse")]
         System.Threading.Tasks.Task LogoutAsync(long userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/QueryPhoneUserById", ReplyAction="ArkyMapService/IMapService/QueryPhoneUserByIdResponse")]
+        ArkyMapsDomainModel.PhoneUser QueryPhoneUserById(long userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/QueryPhoneUserById", ReplyAction="ArkyMapService/IMapService/QueryPhoneUserByIdResponse")]
+        System.Threading.Tasks.Task<ArkyMapsDomainModel.PhoneUser> QueryPhoneUserByIdAsync(long userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -77,6 +83,14 @@ namespace ArkyMapsClient.ArkyMapServiceReference {
         
         public System.Threading.Tasks.Task LogoutAsync(long userId) {
             return base.Channel.LogoutAsync(userId);
+        }
+        
+        public ArkyMapsDomainModel.PhoneUser QueryPhoneUserById(long userId) {
+            return base.Channel.QueryPhoneUserById(userId);
+        }
+        
+        public System.Threading.Tasks.Task<ArkyMapsDomainModel.PhoneUser> QueryPhoneUserByIdAsync(long userId) {
+            return base.Channel.QueryPhoneUserByIdAsync(userId);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ArkyMapsClient.ArkyMapServiceReference;
+using System.ComponentModel;
 using System.ServiceModel;
 using System.Windows;
 
@@ -7,9 +8,6 @@ namespace ArkyMapsClient
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    //[CallbackBehavior(
-    //ConcurrencyMode = ConcurrencyMode.Single,
-    //UseSynchronizationContext = false)]
     public partial class MainWindow : Window
     {
         MapServiceClient client = null;
@@ -24,18 +22,30 @@ namespace ArkyMapsClient
             MapServiceCallbackHandler handler = new MapServiceCallbackHandler();
             client = new MapServiceClient(new InstanceContext(handler));
 
-            //client.Open();
+            client.Open();
 
-            //client.Login("test", "test");
+            client.Login("test", "test");
 
-            //m_mapControl.LoadMapControl(handler);
-            m_realTimeView.Load(handler);
+            m_realTimeView.Load(client, handler);
+
+            m_realTimeViewTabItem.IsSelected = true;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             client.Logout(1);
             client.Close();
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            m_realTimeView.Unload();
+
+            if (client != null && client.State != CommunicationState.Closed)
+            {
+                client.Logout(1);
+                client.Close();
+            }
         }
     }
 }
