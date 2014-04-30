@@ -5,7 +5,7 @@ namespace ArkyMapsDomainModel
     [DataContract(Namespace = "ArkyMaps.com/PhoneService")]
     public class LonLat
     {
-        #region constructors
+        #region constants
         private const string TO_STRING_FORMAT_STRING = "Longitude: {0}, Latitude: {1}";
         #endregion
 

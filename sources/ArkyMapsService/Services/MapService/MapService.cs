@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using ArkyMapsDomainModel;
+using System.ServiceModel;
 
 namespace ArkyMapService
 {
@@ -45,6 +46,17 @@ namespace ArkyMapService
         public void Logout(long userId)
         {
             ServiceController.Instance.LogoutClientUser(userId);
+        }
+
+
+        /// <summary>
+        /// Query <see cref="PhoneUser"/> entity by ID.
+        /// </summary>
+        /// <param name="userId">ID of a <see cref="PhoneUser"/> entity.</param>
+        /// <returns>The <see cref="PhoneUser"/> entity with the specififed ID.</returns>
+        public PhoneUser QueryPhoneUserById(long userId)
+        {
+            return ServiceController.Instance.QueryPhoneUserById(userId);
         }
         #endregion
     }

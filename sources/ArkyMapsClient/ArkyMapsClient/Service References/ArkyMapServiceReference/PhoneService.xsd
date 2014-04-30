@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="ArkyMaps.com/PhoneService" elementFormDefault="qualified" targetNamespace="ArkyMaps.com/PhoneService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="PhoneUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhoneUser" nillable="true" type="tns:PhoneUser" />
+  <xs:complexType name="Location">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="PhoneUserId" type="xs:long" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="tns:LonLat" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Location" nillable="true" type="tns:Location" />
+  <xs:complexType name="LonLat">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
+      <xs:element minOccurs="0" name="Longitude" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LonLat" nillable="true" type="tns:LonLat" />
+</xs:schema>

@@ -8,6 +8,11 @@ namespace ArkyMapsDomainModel
     [DataContract(Namespace = "ArkyMaps.com/PhoneService")]
     public class Location
     {
+        #region constants
+        private const string TO_STRING_FORMAT_STRING = "ID: {0}, PhoneUserID: {1}, Value: {2}";
+        #endregion
+
+
         #region properties
         /// <summary>
         /// Gets or set the ID of location.
@@ -29,5 +34,18 @@ namespace ArkyMapsDomainModel
         [DataMember]
         public LonLat Value { get; set; }
         #endregion
+
+
+        #region object override
+        /// <summary>
+        /// Returns string representation of object.
+        /// </summary>
+        /// <returns>String representation of object.</returns>
+        public override string ToString()
+        {
+            return string.Format(TO_STRING_FORMAT_STRING, ID, PhoneUserId, Value);
+        }
+        #endregion
+
     }
 }
