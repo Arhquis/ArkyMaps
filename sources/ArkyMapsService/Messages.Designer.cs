@@ -61,11 +61,29 @@ namespace ArkyMapService {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to query phone user by its ID {0}..
+        ///   Looks up a localized string similar to Unable to create phone user {0}..
         /// </summary>
-        internal static string ERROR_QUERY_CLIENT_USER_BY_ID {
+        internal static string ERROR_CREATE_PHONE_USER {
             get {
-                return ResourceManager.GetString("ERROR_QUERY_CLIENT_USER_BY_ID", resourceCulture);
+                return ResourceManager.GetString("ERROR_CREATE_PHONE_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to delete phone user {0}..
+        /// </summary>
+        internal static string ERROR_DELETE_PHONE_USER {
+            get {
+                return ResourceManager.GetString("ERROR_DELETE_PHONE_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to modify phone user {0}..
+        /// </summary>
+        internal static string ERROR_MODIFY_PHONE_USER {
+            get {
+                return ResourceManager.GetString("ERROR_MODIFY_PHONE_USER", resourceCulture);
             }
         }
         
@@ -79,11 +97,29 @@ namespace ArkyMapService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to query phone user by its ID {0}..
+        /// </summary>
+        internal static string ERROR_QUERY_PHONE_USER_BY_ID {
+            get {
+                return ResourceManager.GetString("ERROR_QUERY_PHONE_USER_BY_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to query phone user by its name and password {0}..
         /// </summary>
         internal static string ERROR_QUERY_PHONE_USER_BY_NAME_AND_PASSWORD {
             get {
                 return ResourceManager.GetString("ERROR_QUERY_PHONE_USER_BY_NAME_AND_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to query phone users {0}..
+        /// </summary>
+        internal static string ERROR_QUERY_PHONE_USERS {
+            get {
+                return ResourceManager.GetString("ERROR_QUERY_PHONE_USERS", resourceCulture);
             }
         }
         

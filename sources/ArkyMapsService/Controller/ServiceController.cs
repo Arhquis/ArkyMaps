@@ -154,6 +154,27 @@ namespace ArkyMapService
 
 
         /// <summary>
+        /// Query all <see cref="DM.PhoneUser"/> entities.
+        /// </summary>
+        /// <returns>Collection of <see cref="DM.PhoneUser"/> entities.</returns>
+        public IEnumerable<DM.PhoneUser> QueryPhoneUsers()
+        {
+            IEnumerable<DM.PhoneUser> rvPhoneUsers = null;
+
+            try
+            {
+                rvPhoneUsers = m_dalServices.PhoneUserService.QueryPhoneUsers();
+            }
+            catch (Exception ex)
+            {
+                m_logger.WriteLog(Messages.ERROR_QUERY_PHONE_USERS, ex.Message);
+            }
+
+            return rvPhoneUsers;
+        }
+
+
+        /// <summary>
         /// Query <see cref="DM.PhoneUser"/> entity by ID.
         /// </summary>
         /// <param name="userId">ID of a <see cref="DM.PhoneUser"/> entity.</param>
@@ -168,10 +189,76 @@ namespace ArkyMapService
             }
             catch (Exception ex)
             {
-                m_logger.WriteLog(Messages.ERROR_QUERY_CLIENT_USER_BY_ID, ex.Message);
+                m_logger.WriteLog(Messages.ERROR_QUERY_PHONE_USER_BY_ID, ex.Message);
             }
 
             return rvPhoneUser;
+        }
+
+
+        /// <summary>
+        /// Creates a new <see cref="PhoneUser"/> entity.
+        /// </summary>
+        /// <param name="phoneUser">A <see cref="DM.PhoneUser"/> entity to save in database.</param>
+        /// <returns>True if saving was successfull, false otherwise.</returns>
+        public bool CreatePhoneUser(DM.PhoneUser phoneUser)
+        {
+            bool rvSucceeded = false;
+
+            try
+            {
+                rvSucceeded = m_dalServices.PhoneUserService.CreatePhoneUser(phoneUser);
+            }
+            catch (Exception ex)
+            {
+                m_logger.WriteLog(Messages.ERROR_CREATE_PHONE_USER, ex.Message);
+            }
+
+            return rvSucceeded;
+        }
+
+
+        /// <summary>
+        /// Modify the specified <see cref="PhoneUser"/> entity.
+        /// </summary>
+        /// <param name="phoneUser">A <see cref="DM.PhoneUser"/> entity to modify in database.</param>
+        /// <returns>True if modification was successfull, false otherwise.</returns>
+        public bool ModifyPhoneUser(DM.PhoneUser phoneUser)
+        {
+            bool rvSucceeded = false;
+
+            try
+            {
+                rvSucceeded = m_dalServices.PhoneUserService.ModifyPhoneUser(phoneUser);
+            }
+            catch (Exception ex)
+            {
+                m_logger.WriteLog(Messages.ERROR_MODIFY_PHONE_USER, ex.Message);
+            }
+
+            return rvSucceeded;
+        }
+
+
+        /// <summary>
+        /// Delete the specified <see cref="PhoneUser"/> entity.
+        /// </summary>
+        /// <param name="phoneUser">A <see cref="DM.PhoneUser"/> entity to delete.</param>
+        /// <returns>True if delete was successfull, false otherwise.</returns>
+        public bool DeletePhoneUser(DM.PhoneUser phoneUser)
+        {
+            bool rvSucceeded = false;
+
+            try
+            {
+                rvSucceeded = m_dalServices.PhoneUserService.DeletePhoneUser(phoneUser);
+            }
+            catch (Exception ex)
+            {
+                m_logger.WriteLog(Messages.ERROR_DELETE_PHONE_USER, ex.Message);
+            }
+
+            return rvSucceeded;
         }
         #endregion
 
@@ -190,7 +277,7 @@ namespace ArkyMapService
 
             try
             {
-                DM.PhoneUser user = m_dalServices.PhoneUserService.QueryUserByUsernameAndPassword(username, password);
+                DM.PhoneUser user = m_dalServices.PhoneUserService.QueryPhoneUserByUsernameAndPassword(username, password);
 
                 if (user != null)
                 {
