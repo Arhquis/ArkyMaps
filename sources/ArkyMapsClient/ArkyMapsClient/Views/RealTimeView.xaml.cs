@@ -22,6 +22,14 @@ namespace ArkyMapsClient.Views
         #endregion
 
 
+        #region properties
+        /// <summary>
+        /// Indicates whether the <see cref="RealTimeView"/> is loaded or not.
+        /// </summary>
+        public bool IsLoaded { get; private set; }
+        #endregion
+
+
         #region constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="RealTimeView"/> class.
@@ -65,6 +73,8 @@ namespace ArkyMapsClient.Views
             m_locationQueueWorker.Start();
 
             m_callbackHandler.LocationSent += CallbackHandler_LocationSent;
+
+            IsLoaded = true;
         }
 
 
@@ -75,6 +85,8 @@ namespace ArkyMapsClient.Views
         {
             m_callbackHandler.LocationSent -= CallbackHandler_LocationSent;
             m_locationQueueWorker.Stop();
+
+            IsLoaded = false;
         }
         #endregion
 

@@ -14,16 +14,16 @@ namespace ArkyMapService
         /// </summary>
         /// <param name="username">Username of user.</param>
         /// <param name="password">Password of user.</param>
-        /// <returns>True if log in was successfull, false otherwise.</returns>
+        /// <returns>The <see cref="ClientUser"/> logged in.</returns>
         [OperationContract]
-        bool Login(string username, string password);
+        ClientUser Login(string username, string password);
 
 
         /// <summary>
         /// Log out the user.
         /// </summary>
         /// <param name="userId">ID of user.</param>
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void Logout(long userId);
 
 

@@ -16,15 +16,15 @@ namespace ArkyMapsClient.ArkyMapServiceReference {
     public interface IMapService {
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/Login", ReplyAction="ArkyMapService/IMapService/LoginResponse")]
-        bool Login(string username, string password);
+        ArkyMapsDomainModel.ClientUser Login(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/Login", ReplyAction="ArkyMapService/IMapService/LoginResponse")]
-        System.Threading.Tasks.Task<bool> LoginAsync(string username, string password);
+        System.Threading.Tasks.Task<ArkyMapsDomainModel.ClientUser> LoginAsync(string username, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/Logout", ReplyAction="ArkyMapService/IMapService/LogoutResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="ArkyMapService/IMapService/Logout")]
         void Logout(long userId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/Logout", ReplyAction="ArkyMapService/IMapService/LogoutResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="ArkyMapService/IMapService/Logout")]
         System.Threading.Tasks.Task LogoutAsync(long userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/QueryPhoneUserById", ReplyAction="ArkyMapService/IMapService/QueryPhoneUserByIdResponse")]
@@ -69,11 +69,11 @@ namespace ArkyMapsClient.ArkyMapServiceReference {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public bool Login(string username, string password) {
+        public ArkyMapsDomainModel.ClientUser Login(string username, string password) {
             return base.Channel.Login(username, password);
         }
         
-        public System.Threading.Tasks.Task<bool> LoginAsync(string username, string password) {
+        public System.Threading.Tasks.Task<ArkyMapsDomainModel.ClientUser> LoginAsync(string username, string password) {
             return base.Channel.LoginAsync(username, password);
         }
         

@@ -12,7 +12,7 @@
   <xs:element name="LoginResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="LoginResult" type="xs:boolean" />
+        <xs:element xmlns:q1="ArkyMaps.com/PhoneService" minOccurs="0" name="LoginResult" nillable="true" type="q1:ClientUser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -21,11 +21,6 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:long" />
       </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="LogoutResponse">
-    <xs:complexType>
-      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="QueryPhoneUserById">
@@ -38,14 +33,14 @@
   <xs:element name="QueryPhoneUserByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="ArkyMaps.com/PhoneService" minOccurs="0" name="QueryPhoneUserByIdResult" nillable="true" type="q1:PhoneUser" />
+        <xs:element xmlns:q2="ArkyMaps.com/PhoneService" minOccurs="0" name="QueryPhoneUserByIdResult" nillable="true" type="q2:PhoneUser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="NewLocation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="ArkyMaps.com/PhoneService" minOccurs="0" name="location" nillable="true" type="q2:Location" />
+        <xs:element xmlns:q3="ArkyMaps.com/PhoneService" minOccurs="0" name="location" nillable="true" type="q3:Location" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
