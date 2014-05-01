@@ -26,16 +26,16 @@ namespace ArkyMapService
         /// </summary>
         /// <param name="username">Username of user.</param>
         /// <param name="password">Password of user.</param>
-        /// <returns>True if log in was successfull, false otherwise.</returns>
-        public bool Login(string username, string password)
+        /// <returns>The <see cref="ClientUser"/> logged in.</returns>
+        public ClientUser Login(string username, string password)
         {
-            bool rvSucceeded = false;
+            ClientUser rvClientUser = null;
 
             IMapServiceCallback callback = OperationContext.Current.GetCallbackChannel<IMapServiceCallback>();
 
-            rvSucceeded = ServiceController.Instance.LoginClientUser(username, password, callback);
+            rvClientUser = ServiceController.Instance.LoginClientUser(username, password, callback);
 
-            return rvSucceeded;
+            return rvClientUser;
         }
 
 

@@ -5,20 +5,23 @@
         Title="Arky maps" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <TabControl x:Name="m_tabControl">
         <TabItem Header="Login">
-            <StackPanel>
-                <Button Content="Connect" Click="Button_Click" />
-                <TextBox Text="semmi" x:Name="m_textBox"/>
-                <Button Content="Disconnect" Click="Button_Click_1" />
-                <ProgressBar Height="10"/>
-            </StackPanel>
-        </TabItem>
-        <TabItem Header="Map" x:Name="m_realTimeViewTabItem">
             <Grid>
-                <views:RealTimeView x:Name="m_realTimeView" />
+                <views:LoginView HorizontalAlignment="Center" VerticalAlignment="Center"
+                                 Width="300"
+                                 x:Name="m_loginView"/>
             </Grid>
         </TabItem>
-        <TabItem Header="Administration">
-
+        <TabItem Header="Map"
+                 x:Name="m_realTimeViewTabItem"
+                 IsEnabled="False">
+            <Grid>
+                <views:RealTimeView
+                    x:Name="m_realTimeView"/>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Administration"
+                 x:Name="m_administrationViewTabItem"
+                 IsEnabled="False">
         </TabItem>
     </TabControl>
 </Window>

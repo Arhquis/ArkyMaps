@@ -102,28 +102,27 @@ namespace ArkyMapService
         /// <param name="username">Username of <see cref="ClientUser"/>.</param>
         /// <param name="password">Password of <see cref="ClientUser"/>.</param>
         /// <param name="callback">Callback object belongs to <see cref="ClientUser"/>.</param>
-        /// <returns>True if log in succeeded, false otherwise.</returns>
-        public bool LoginClientUser(string username, string password, IMapServiceCallback callback)
+        /// <returns>The logged in <see cref="ClientUser"/> if it was successfull, null otherwise.</returns>
+        public DM.ClientUser LoginClientUser(string username, string password, IMapServiceCallback callback)
         {
-            bool rvSucceeded = false;
+            DM.ClientUser rvClientUser = null;
 
             try
             {
-                DM.ClientUser user = m_dalServices.ClientUserService.QueryUserByUsernameAndPassword(username, password);
+                rvClientUser = m_dalServices.ClientUserService.QueryUserByUsernameAndPassword(username, password);
 
-                if (user != null)
+                if (rvClientUser != null)
                 {
                     // debug purpose only
-                    if (m_registeredUsers.ContainsKey(user.ID))
+                    if (m_registeredUsers.ContainsKey(rvClientUser.ID))
                     {
-                        m_registeredUsers.Remove(user.ID);
+                        m_registeredUsers.Remove(rvClientUser.ID);
                     }
 
-                    m_registeredUsers.Add(user.ID, callback);
+                    m_registeredUsers.Add(rvClientUser.ID, callback);
 
-                    rvSucceeded = true;
 
-                    m_logger.WriteLog(Messages.MESSAGE_CLIENT_USER_LOGIN_SUCCEEDED, user.Name, DateTime.Now.ToString());
+                    m_logger.WriteLog(Messages.MESSAGE_CLIENT_USER_LOGIN_SUCCEEDED, rvClientUser.Name, DateTime.Now.ToString());
                 }
                 else
                 {
@@ -135,7 +134,7 @@ namespace ArkyMapService
                 m_logger.WriteLog(Messages.ERROR_QUERY_CLIENT_USER_BY_NAME_AND_PASSWORD, ex.Message);
             }
 
-            return rvSucceeded;
+            return rvClientUser;
         }
 
 
@@ -145,8 +144,6 @@ namespace ArkyMapService
         /// <param name="userId"></param>
         public void LogoutClientUser(long userId)
         {
-            //DM.ClientUser user = m_registeredUsers.Keys.SingleOrDefault(u => u.ID == userId);
-
             if (m_registeredUsers.ContainsKey(userId))
             {
                 m_registeredUsers.Remove(userId);

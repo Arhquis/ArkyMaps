@@ -14,11 +14,24 @@ namespace ArkyMapsClient.Views
     public partial class RealTimeView : UserControl
     {
         #region attributes
-        private MapServiceClient m_servieClient;
         private MapServiceCallbackHandler m_callbackHandler;
 
         private QueueWorker<Location> m_locationQueueWorker;
         private Dictionary<PhoneUser, MapUser> m_phoneUserMapObjectMap;
+        #endregion
+
+
+        #region properties
+        /// <summary>
+        /// Gets or sets the <see cref="MainWindow"/> instance.
+        /// </summary>
+        public MainWindow MainWindow { get; set; }
+
+
+        /// <summary>
+        /// Indicates whether the <see cref="RealTimeView"/> is loaded or not.
+        /// </summary>
+        public bool IsViewLoaded { get; private set; }
         #endregion
 
 
@@ -37,11 +50,9 @@ namespace ArkyMapsClient.Views
         /// <summary>
         /// Loads the real time view and its components.
         /// </summary>
-        /// <param name="serviceClient">Instance of a <see cref="MapServiceClient"/> class.</param>
         /// <param name="callbackHandler">Instance of a <see cref="MapServiceCallbackHandler"/> class.</param>
-        public void Load(MapServiceClient serviceClient, MapServiceCallbackHandler callbackHandler)
+        public void Load(MapServiceCallbackHandler callbackHandler)
         {
-            m_servieClient = serviceClient;
             m_callbackHandler = callbackHandler;
 
             m_mapControl.MapLoaded += MapControl_MapLoaded;
@@ -65,6 +76,8 @@ namespace ArkyMapsClient.Views
             m_locationQueueWorker.Start();
 
             m_callbackHandler.LocationSent += CallbackHandler_LocationSent;
+
+            IsViewLoaded = true;
         }
 
 
@@ -75,6 +88,8 @@ namespace ArkyMapsClient.Views
         {
             m_callbackHandler.LocationSent -= CallbackHandler_LocationSent;
             m_locationQueueWorker.Stop();
+
+            IsViewLoaded = false;
         }
         #endregion
 
@@ -103,7 +118,7 @@ namespace ArkyMapsClient.Views
 
             if (phoneUser == null)
             {
-                phoneUser = m_servieClient.QueryPhoneUserById(location.PhoneUserId);
+                phoneUser = MainWindow.QueryPhoneUserById(location.PhoneUserId);
 
                 Dispatcher.Invoke(new Action(() =>
                 {
