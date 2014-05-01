@@ -28,6 +28,7 @@ namespace ArkyMapsClient
             InitializeComponent();
 
             m_loginView.MainWindow = this;
+            m_realTimeView.MainWindow = this;
         }
         #endregion
 
@@ -54,7 +55,7 @@ namespace ArkyMapsClient
 
                 if (m_client != null)
                 {
-                    m_realTimeView.Load(m_serviceClient, m_callbackHandler);
+                    m_realTimeView.Load(m_callbackHandler);
 
                     m_realTimeViewTabItem.IsSelected = true;
                     m_realTimeViewTabItem.IsEnabled = true;
@@ -82,7 +83,7 @@ namespace ArkyMapsClient
         /// </summary>
         internal void Logout()
         {
-            if (m_realTimeView.IsLoaded)
+            if (m_realTimeView.IsViewLoaded)
             {
                 m_realTimeView.Unload();
             }
@@ -113,6 +114,29 @@ namespace ArkyMapsClient
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             Logout();
+        }
+        #endregion
+
+
+        #region service methods
+        /// <summary>
+        /// Queries <see cref="PhoneUser"/> entity by its ID.
+        /// </summary>
+        /// <param name="userId">ID of <see cref="PhoneUser"/> will be queried.</param>
+        /// <returns>The queried <see cref="PhoneUser"/> entity.</returns>
+        internal PhoneUser QueryPhoneUserById(long userId)
+        {
+            PhoneUser rvPhoneUser = null;
+
+            try
+            {
+                rvPhoneUser = m_serviceClient.QueryPhoneUserById(userId);
+            }
+            catch (Exception)
+            {
+            }
+
+            return rvPhoneUser;
         }
         #endregion
     }
