@@ -26,7 +26,7 @@ namespace ArkyMapsDal
         }
     
         public DbSet<ClientUser> ClientUser { get; set; }
-        public DbSet<Location> Location { get; set; }
         public DbSet<PhoneUser> PhoneUser { get; set; }
+        public DbSet<Position> Position { get; set; }
     }
 }

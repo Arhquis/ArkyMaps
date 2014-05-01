@@ -65,11 +65,11 @@
       <DependentUpon>ArkyMapsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DalServices.cs" />
-    <Compile Include="Location.cs">
-      <DependentUpon>ArkyMapsModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Mappers\EdmToDmMapper.cs" />
     <Compile Include="PhoneUser.cs">
+      <DependentUpon>ArkyMapsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Position.cs">
       <DependentUpon>ArkyMapsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

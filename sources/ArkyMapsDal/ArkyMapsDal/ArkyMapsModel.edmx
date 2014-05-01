@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ArkyMapsDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ArkyMapsDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ClientUser">
           <Key>
             <PropertyRef Name="ID" />
@@ -13,7 +13,19 @@
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Location">
+        <EntityType Name="PhoneUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Male" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Position">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -22,37 +34,28 @@
           <Property Name="Longitude" Type="real" Nullable="false" />
           <Property Name="Latitude" Type="real" Nullable="false" />
         </EntityType>
-        <EntityType Name="PhoneUser">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_Location_PhoneUser">
+        <Association Name="FK_Position_PhoneUser">
           <End Role="PhoneUser" Type="Self.PhoneUser" Multiplicity="1" />
-          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <End Role="Position" Type="Self.Position" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PhoneUser">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Location">
+            <Dependent Role="Position">
               <PropertyRef Name="PhoneUserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ArkyMapsDatabaseModelStoreContainer">
           <EntitySet Name="ClientUser" EntityType="Self.ClientUser" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhoneUser" EntityType="Self.PhoneUser" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Location_PhoneUser" Association="Self.FK_Location_PhoneUser">
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Position_PhoneUser" Association="Self.FK_Position_PhoneUser">
             <End Role="PhoneUser" EntitySet="PhoneUser" />
-            <End Role="Location" EntitySet="Location" />
+            <End Role="Position" EntitySet="Position" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ArkyMapsDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -64,7 +67,29 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="Location">
+        <EntityType Name="PhoneUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Male" Type="Boolean" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Position" Relationship="ArkyMapsDatabaseModel.FK_Position_PhoneUser" FromRole="PhoneUser" ToRole="Position" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ArkyMapsDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClientUser" EntityType="Self.ClientUser" />
+          <EntitySet Name="PhoneUser" EntityType="Self.PhoneUser" />
+          <EntitySet Name="Position" EntityType="ArkyMapsDatabaseModel.Position" />
+          <AssociationSet Name="FK_Position_PhoneUser" Association="ArkyMapsDatabaseModel.FK_Position_PhoneUser">
+            <End Role="PhoneUser" EntitySet="PhoneUser" />
+            <End Role="Position" EntitySet="Position" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Position">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -72,38 +97,20 @@
           <Property Name="PhoneUserId" Type="Int64" Nullable="false" />
           <Property Name="Longitude" Type="Single" Nullable="false" />
           <Property Name="Latitude" Type="Single" Nullable="false" />
-          <NavigationProperty Name="PhoneUser" Relationship="Self.FK_Location_PhoneUser" FromRole="Location" ToRole="PhoneUser" />
+          <NavigationProperty Name="PhoneUser" Relationship="ArkyMapsDatabaseModel.FK_Position_PhoneUser" FromRole="Position" ToRole="PhoneUser" />
         </EntityType>
-        <EntityType Name="PhoneUser">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Location" Relationship="Self.FK_Location_PhoneUser" FromRole="PhoneUser" ToRole="Location" />
-        </EntityType>
-        <Association Name="FK_Location_PhoneUser">
-          <End Role="PhoneUser" Type="Self.PhoneUser" Multiplicity="1" />
-          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+        <Association Name="FK_Position_PhoneUser">
+          <End Type="ArkyMapsDatabaseModel.PhoneUser" Role="PhoneUser" Multiplicity="1" />
+          <End Type="ArkyMapsDatabaseModel.Position" Role="Position" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PhoneUser">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Location">
+            <Dependent Role="Position">
               <PropertyRef Name="PhoneUserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ArkyMapsDatabaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ClientUser" EntityType="Self.ClientUser" />
-          <EntitySet Name="Location" EntityType="Self.Location" />
-          <EntitySet Name="PhoneUser" EntityType="Self.PhoneUser" />
-          <AssociationSet Name="FK_Location_PhoneUser" Association="Self.FK_Location_PhoneUser">
-            <End Role="PhoneUser" EntitySet="PhoneUser" />
-            <End Role="Location" EntitySet="Location" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -119,22 +126,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Location">
-            <EntityTypeMapping TypeName="ArkyMapsDatabaseModel.Location">
-              <MappingFragment StoreEntitySet="Location">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="PhoneUserId" ColumnName="PhoneUserId" />
-                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
-                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PhoneUser">
             <EntityTypeMapping TypeName="ArkyMapsDatabaseModel.PhoneUser">
               <MappingFragment StoreEntitySet="PhoneUser">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Male" ColumnName="Male" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Position">
+            <EntityTypeMapping TypeName="ArkyMapsDatabaseModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="PhoneUserId" ColumnName="PhoneUserId" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

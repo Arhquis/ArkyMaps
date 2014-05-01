@@ -11,20 +11,31 @@ Post-Deployment Script Template
 */
     CREATE PROCEDURE #addPhoneUser
     (
-        @name varchar(50)
+        @userName varchar(50)
         ,@password varchar(50)
+        ,@name varchar(100)
+        ,@male bit
+        ,@email varchar(50)
     )
     AS
     BEGIN
         INSERT INTO PhoneUser
         (
-            Name
+            UserName
             ,Password
+            ,Name
+            ,Male
+            ,Email
+            ,Deleted
         )
         VALUES
         (
-            @name
+            @userName
             ,@password
+            ,@name
+            ,@male
+            ,@email
+            ,'false'
         )
     END
     GO
@@ -41,19 +52,46 @@ Post-Deployment Script Template
         ,N'test'
     )
 
+    -- test1 user
+    EXEC #addPhoneUser
+        N'test1'
+        ,N'test1'
+        ,N'Kiss Tibor'
+        ,'true'
+        ,N'tibor.kiss@gmail.com'
 
-    -- phone users
-    DECLARE @counter int = 1;
-    DECLARE @baseName varchar(50) = 'test'
-    DECLARE @name varchar(50)
+    -- test2 user
+    EXEC #addPhoneUser
+        N'test2'
+        ,N'test2'
+        ,N'Hóbort Géza'
+        ,'true'
+        ,N'hobi@gmail.com'
 
-    WHILE @counter < 6
-    BEGIN
-        SET @name = @baseName + cast(@counter as char(1))
 
-        EXEC #addPhoneUser
-            @name
-            ,@name
+    -- test3 user
+    EXEC #addPhoneUser
+        N'test3'
+        ,N'test3'
+        ,N'Bársony Melinda'
+        ,'false'
+        ,N'melcsi@hotmail.com'
 
-        SET @counter = @counter + 1
-    END
+
+    -- test4 user
+    EXEC #addPhoneUser
+        N'test4'
+        ,N'test4'
+        ,N'Dörmögő Dömötör'
+        ,'true'
+        ,N'donci@live.com'
+
+
+    -- test5 user
+    EXEC #addPhoneUser
+        N'test5'
+        ,N'test5'
+        ,N'Szűcs Kinga'
+        ,'false'
+        ,N'kinga.szucs.1@gmail.com'
+GO

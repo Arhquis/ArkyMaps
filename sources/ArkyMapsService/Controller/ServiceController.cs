@@ -219,10 +219,10 @@ namespace ArkyMapService
         /// <param name="lonLat">Location value.</param>
         public void NewLocation(long userId, LonLat lonLat)
         {
-            DM.Location location = new DM.Location
+            DM.Position location = new DM.Position
             {
                 PhoneUserId = userId,
-                Value = lonLat
+                Location = lonLat
             };
 
             Console.WriteLine(string.Format("Location data sent. (UserId: {0}, Location: {1}", userId, lonLat));

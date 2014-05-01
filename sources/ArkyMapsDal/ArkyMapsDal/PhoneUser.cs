@@ -16,13 +16,17 @@ namespace ArkyMapsDal
     {
         public PhoneUser()
         {
-            this.Location = new HashSet<Location>();
+            this.Position = new HashSet<Position>();
         }
     
         public long ID { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
+        public string UserName { get; set; }
+        public bool Male { get; set; }
+        public string Email { get; set; }
+        public bool Deleted { get; set; }
     
-        public virtual ICollection<Location> Location { get; set; }
+        public virtual ICollection<Position> Position { get; set; }
     }
 }
