@@ -59,6 +59,18 @@ namespace ArkyMapsDal.UnitTest
             Assert.IsNotNull(phoneUser);
             Assert.AreEqual(expectedId, phoneUser.ID);
         }
+
+
+        [TestMethod]
+        public void QueryPhoneUserById()
+        {
+            long userId = 2;
+
+            DM.PhoneUser phoneUser = m_phoneUserService.QueryPhoneUserById(userId);
+
+            Assert.IsNotNull(phoneUser);
+            Assert.AreEqual(userId, phoneUser.ID);
+        }
         #endregion
     }
 }
