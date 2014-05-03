@@ -3,7 +3,7 @@ function AddMapUser(id, name, displayLonLat) {
 
     var dataLonLat = transformLonLatDisplayToData(displayLonLat.clone());
 
-    var icon = new OpenLayers.Icon('markers/phone.png');
+    var icon = new OpenLayers.Icon('markers/phone_blue.png');
     var marker = new OpenLayers.Marker(dataLonLat, icon);
 
     icon.size.w = 32;

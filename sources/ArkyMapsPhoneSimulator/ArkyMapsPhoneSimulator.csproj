@@ -54,6 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="Data\location_set_2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Service References\ArkyPhoneServiceReference\PhoneService.wsdl" />
     <None Include="Service References\ArkyPhoneServiceReference\PhoneService.xsd">
       <SubType>Designer</SubType>
