@@ -26,5 +26,21 @@ function LoadMap() {
     m_userLayer = new OpenLayers.Layer.Markers("UserLayer");
     m_map.addLayer(m_userLayer);
 
+    m_map.events.on({
+        "zoomend": MapZoomEnded,
+        scope: m_map
+    });
+
     window.external.MapLoadedCallback();
+}
+
+// Refresh map user locations on map zoom.
+function MapZoomEnded() {
+    if (m_userLayer != null) {
+        for (var i = 0; i < m_userLayer.markers.length; i++) {
+            var marker = m_userLayer.markers[i];
+
+            MoveMapUser(marker, marker.displayLonLat);
+        }
+    }
 }
