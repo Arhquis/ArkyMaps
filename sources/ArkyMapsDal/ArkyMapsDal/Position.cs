@@ -12,7 +12,7 @@ namespace ArkyMapsDal
     using System;
     using System.Collections.Generic;
     
-    public partial class Location
+    public partial class Position
     {
         public long ID { get; set; }
         public long PhoneUserId { get; set; }

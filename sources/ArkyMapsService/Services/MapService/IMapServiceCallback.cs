@@ -9,10 +9,10 @@ namespace ArkyMapService
     public interface IMapServiceCallback
     {
         /// <summary>
-        /// Send new <see cref="Location"/> entity to clients.
+        /// Send new <see cref="Position"/> entity to clients.
         /// </summary>
-        /// <param name="location">The new <see cref="Location"/>.</param>
+        /// <param name="position">The new <see cref="Position"/>.</param>
         [OperationContract(IsOneWay = true)]
-        void NewLocation(Location location);
+        void NewPosition(Position position);
     }
 }

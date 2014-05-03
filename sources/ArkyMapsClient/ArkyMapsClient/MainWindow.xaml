@@ -22,6 +22,10 @@
         <TabItem Header="Administration"
                  x:Name="m_administrationViewTabItem"
                  IsEnabled="False">
+            <Grid>
+                <views:AdministrationView
+                    x:Name="m_administrationView"/>
+            </Grid>
         </TabItem>
     </TabControl>
 </Window>

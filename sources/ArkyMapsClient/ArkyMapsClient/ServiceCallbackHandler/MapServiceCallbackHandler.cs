@@ -11,9 +11,9 @@ namespace ArkyMapsClient
     {
         #region events
         /// <summary>
-        /// Fires if a new location has been sent by map service.
+        /// Fires if a new position has been sent by map service.
         /// </summary>
-        public event EventHandler<LocationSentEventArgs> LocationSent;
+        public event EventHandler<PositionSentEventArgs> PositionSent;
         #endregion
 
 
@@ -21,12 +21,12 @@ namespace ArkyMapsClient
         /// <summary>
         /// Send new <see cref="Location"/> entity to clients.
         /// </summary>
-        /// <param name="location">The new <see cref="Location"/>.</param>
-        public void NewLocation(Location location)
+        /// <param name="position">The new <see cref="Location"/>.</param>
+        public void NewPosition(Position position)
         {
-            if (LocationSent != null)
+            if (PositionSent != null)
             {
-                LocationSent(this, new LocationSentEventArgs { Location = location });
+                PositionSent(this, new PositionSentEventArgs { Position = position });
             }
         }
         #endregion

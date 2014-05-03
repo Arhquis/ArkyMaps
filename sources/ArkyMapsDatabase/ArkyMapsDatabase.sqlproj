@@ -65,7 +65,7 @@
   <ItemGroup>
     <Build Include="Tables\PhoneUser.sql" />
     <Build Include="Tables\ClientUser.sql" />
-    <Build Include="Tables\Location.sql" />
+    <Build Include="Tables\Position.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ArkyMapsDatabase.refactorlog" />

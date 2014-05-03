@@ -34,13 +34,13 @@ namespace ArkyMapService
 
 
         /// <summary>
-        /// Register a new location for user belongs to user ID.
+        /// Register a new position for user belongs to user ID.
         /// </summary>
         /// <param name="userId">ID of user.</param>
         /// <param name="location">Location value.</param>
-        public void NewLocation(long userId, LonLat location)
+        public void NewPosition(long userId, LonLat location)
         {
-            ServiceController.Instance.NewLocation(userId, location);
+            ServiceController.Instance.NewPosition(userId, location);
         }
         #endregion
     }

@@ -61,7 +61,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ServiceCallbackHandler\LocationSentEventArgs.cs" />
+    <Compile Include="Controls\PhoneUserAdministration.xaml.cs">
+      <DependentUpon>PhoneUserAdministration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PhoneUserList.xaml.cs">
+      <DependentUpon>PhoneUserList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceCallbackHandler\PositionSentEventArgs.cs" />
     <Compile Include="ServiceCallbackHandler\MapServiceCallbackHandler.cs" />
     <Compile Include="Utilities\QueueWorker.cs" />
     <Compile Include="Service References\ArkyMapServiceReference\Reference.cs">
@@ -69,12 +75,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdministrationView.xaml.cs">
+      <DependentUpon>AdministrationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RealTimeView.xaml.cs">
       <DependentUpon>RealTimeView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\PhoneUserAdministration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PhoneUserList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -87,6 +104,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AdministrationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -158,9 +179,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ArkyMapServiceReference\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

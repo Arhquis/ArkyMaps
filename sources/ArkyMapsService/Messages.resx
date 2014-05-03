@@ -117,12 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ERROR_QUERY_CLIENT_USER_BY_ID" xml:space="preserve">
-    <value>Unable to query phone user by its ID {0}.</value>
+  <data name="ERROR_CREATE_PHONE_USER" xml:space="preserve">
+    <value>Unable to create phone user {0}.</value>
+    <comment>0: exception message</comment>
+  </data>
+  <data name="ERROR_DELETE_PHONE_USER" xml:space="preserve">
+    <value>Unable to delete phone user {0}.</value>
+    <comment>0: exception message</comment>
+  </data>
+  <data name="ERROR_MODIFY_PHONE_USER" xml:space="preserve">
+    <value>Unable to modify phone user {0}.</value>
     <comment>0: exception message</comment>
   </data>
   <data name="ERROR_QUERY_CLIENT_USER_BY_NAME_AND_PASSWORD" xml:space="preserve">
     <value>Unable to query client user by its name and password {0}.</value>
+    <comment>0: exception message</comment>
+  </data>
+  <data name="ERROR_QUERY_PHONE_USERS" xml:space="preserve">
+    <value>Unable to query phone users {0}.</value>
+  </data>
+  <data name="ERROR_QUERY_PHONE_USER_BY_ID" xml:space="preserve">
+    <value>Unable to query phone user by its ID {0}.</value>
     <comment>0: exception message</comment>
   </data>
   <data name="ERROR_QUERY_PHONE_USER_BY_NAME_AND_PASSWORD" xml:space="preserve">

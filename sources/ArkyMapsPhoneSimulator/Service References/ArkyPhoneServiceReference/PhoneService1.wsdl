@@ -13,8 +13,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="NewLocation">
-      <soap:operation soapAction="ArkyMaps.com/PhoneService/IPhoneService/NewLocation" style="document" />
+    <wsdl:operation name="NewPosition">
+      <soap:operation soapAction="ArkyMaps.com/PhoneService/IPhoneService/NewPosition" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

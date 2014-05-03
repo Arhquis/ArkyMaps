@@ -16,6 +16,7 @@ namespace ArkyMapsPhoneSimulator
     {
         #region constants
         private const string LOCATION_SENT_MESSAGE_FORMAT_STRING = "Location data sent. (User id: {0}, location: {1})";
+        private const string LOGIN_FAILED = "Login failed.";
         #endregion
 
 
@@ -107,13 +108,19 @@ namespace ArkyMapsPhoneSimulator
 
                 long userId = m_client.Login(m_username, m_password);
 
+                if (userId == -1)
+                {
+                    Console.WriteLine(LOGIN_FAILED);
+                    return;
+                }
+
                 int index = m_offset;
 
                 while (true)
                 {
                     LonLat location = m_locations[index];
 
-                    m_client.NewLocation(userId, location);
+                    m_client.NewPosition(userId, location);
 
                     if (m_isVerbose)
                     {

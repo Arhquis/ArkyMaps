@@ -4,7 +4,7 @@ using EDM = ArkyMapsDal;
 namespace ArkyMapsDal
 {
     /// <summary>
-    /// This class holds mappers from entity domain model to domain model.
+    /// This class holds mappers from domain model to entity domain model.
     /// </summary>
     internal static class EdmToDmMapper
     {
@@ -19,8 +19,11 @@ namespace ArkyMapsDal
             DM.PhoneUser rvDmPhoneUser = new DM.PhoneUser
             {
                 ID = edmPhoneUser.ID,
+                UserName = edmPhoneUser.UserName,
+                Password = edmPhoneUser.Password,
                 Name = edmPhoneUser.Name,
-                Password = edmPhoneUser.Password
+                Male = edmPhoneUser.Male,
+                Email = edmPhoneUser.Email
             };
 
             return rvDmPhoneUser;

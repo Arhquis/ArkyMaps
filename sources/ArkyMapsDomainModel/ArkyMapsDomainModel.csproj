@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\LonLat.cs" />
-    <Compile Include="Entities\Location.cs" />
+    <Compile Include="Entities\Position.cs" />
     <Compile Include="Entities\PhoneUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\ClientUser.cs" />

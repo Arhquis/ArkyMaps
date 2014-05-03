@@ -3,13 +3,13 @@
 namespace ArkyMapsDomainModel
 {
     /// <summary>
-    /// The class represent a location entity.
+    /// The class represent a position entity.
     /// </summary>
     [DataContract(Namespace = "ArkyMaps.com/PhoneService")]
-    public class Location
+    public class Position
     {
         #region constants
-        private const string TO_STRING_FORMAT_STRING = "ID: {0}, PhoneUserID: {1}, Value: {2}";
+        private const string TO_STRING_FORMAT_STRING = "ID: {0}, PhoneUserID: {1}, Location: {2}";
         #endregion
 
 
@@ -32,7 +32,7 @@ namespace ArkyMapsDomainModel
         /// Gets or set the location value of entity.
         /// </summary>
         [DataMember]
-        public LonLat Value { get; set; }
+        public LonLat Location { get; set; }
         #endregion
 
 
@@ -43,7 +43,7 @@ namespace ArkyMapsDomainModel
         /// <returns>String representation of object.</returns>
         public override string ToString()
         {
-            return string.Format(TO_STRING_FORMAT_STRING, ID, PhoneUserId, Value);
+            return string.Format(TO_STRING_FORMAT_STRING, ID, PhoneUserId, Location);
         }
         #endregion
 

@@ -15,7 +15,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="NewLocation">
+  <xs:element name="NewPosition">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:long" />
@@ -30,7 +30,7 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="LonLat" nillable="true" type="tns:LonLat" />
-  <xs:element name="NewLocationResponse">
+  <xs:element name="NewPositionResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

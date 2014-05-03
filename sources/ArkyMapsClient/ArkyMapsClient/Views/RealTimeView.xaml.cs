@@ -16,7 +16,7 @@ namespace ArkyMapsClient.Views
         #region attributes
         private MapServiceCallbackHandler m_callbackHandler;
 
-        private QueueWorker<Location> m_locationQueueWorker;
+        private QueueWorker<Position> m_locationQueueWorker;
         private Dictionary<PhoneUser, MapUser> m_phoneUserMapObjectMap;
         #endregion
 
@@ -72,10 +72,10 @@ namespace ArkyMapsClient.Views
 
             m_phoneUserMapObjectMap = new Dictionary<PhoneUser, MapUser>();
 
-            m_locationQueueWorker = new QueueWorker<Location>(1000, HandleQueue);
+            m_locationQueueWorker = new QueueWorker<Position>(1000, HandleQueue);
             m_locationQueueWorker.Start();
 
-            m_callbackHandler.LocationSent += CallbackHandler_LocationSent;
+            m_callbackHandler.PositionSent += CallbackHandler_LocationSent;
 
             IsViewLoaded = true;
         }
@@ -86,7 +86,7 @@ namespace ArkyMapsClient.Views
         /// </summary>
         public void Unload()
         {
-            m_callbackHandler.LocationSent -= CallbackHandler_LocationSent;
+            m_callbackHandler.PositionSent -= CallbackHandler_LocationSent;
             m_locationQueueWorker.Stop();
 
             IsViewLoaded = false;
@@ -100,9 +100,9 @@ namespace ArkyMapsClient.Views
         /// </summary>
         /// <param name="sender">Sender of the event.</param>
         /// <param name="e">Arguments of the event.</param>
-        private void CallbackHandler_LocationSent(object sender, LocationSentEventArgs e)
+        private void CallbackHandler_LocationSent(object sender, PositionSentEventArgs e)
         {
-            m_locationQueueWorker.Enqueue(e.Location);
+            m_locationQueueWorker.Enqueue(e.Position);
         }
 
 
@@ -110,19 +110,19 @@ namespace ArkyMapsClient.Views
         /// Handles location dequeued from location queue.
         /// Register new phone user if it was not registered before and move registered ones into the new location.
         /// </summary>
-        /// <param name="location">Location value pick from the queue.</param>
-        void HandleQueue(Location location)
+        /// <param name="position">Location value pick from the queue.</param>
+        void HandleQueue(Position position)
         {
-            PhoneUser phoneUser = m_phoneUserMapObjectMap.Keys.SingleOrDefault(user => user.ID == location.PhoneUserId);
+            PhoneUser phoneUser = m_phoneUserMapObjectMap.Keys.SingleOrDefault(user => user.ID == position.PhoneUserId);
             MapUser mapObject = null;
 
             if (phoneUser == null)
             {
-                phoneUser = MainWindow.QueryPhoneUserById(location.PhoneUserId);
+                phoneUser = MainWindow.QueryPhoneUserById(position.PhoneUserId);
 
                 Dispatcher.Invoke(new Action(() =>
                 {
-                    mapObject = m_mapControl.AddMapUserToMap(phoneUser.ID, phoneUser.Name, location.Value);
+                    mapObject = m_mapControl.AddMapUserToMap(phoneUser.ID, phoneUser.Name, position.Location);
                 }));
 
                 m_phoneUserMapObjectMap.Add(phoneUser, mapObject);
@@ -134,7 +134,7 @@ namespace ArkyMapsClient.Views
 
             Dispatcher.Invoke(new Action(() =>
             {
-                mapObject.Location = location.Value;
+                mapObject.Location = position.Location;
             }));
         }
         #endregion

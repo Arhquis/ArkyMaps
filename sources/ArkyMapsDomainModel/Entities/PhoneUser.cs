@@ -17,10 +17,10 @@ namespace ArkyMapsDomainModel
 
 
         /// <summary>
-        /// Gets or sets the name of user.
+        /// Gets or sets the username of user.
         /// </summary>
         [DataMember]
-        public string Name { get; set; }
+        public string UserName { get; set; }
 
 
         /// <summary>
@@ -28,6 +28,27 @@ namespace ArkyMapsDomainModel
         /// </summary>
         [DataMember]
         public string Password { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets the name of user.
+        /// </summary>
+        [DataMember]
+        public string Name { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets whether the user male or not.
+        /// </summary>
+        [DataMember]
+        public bool Male { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets the email of user.
+        /// </summary>
+        [DataMember]
+        public string Email { get; set; }
         #endregion
     }
 }
