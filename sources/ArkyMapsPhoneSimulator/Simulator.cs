@@ -120,7 +120,7 @@ namespace ArkyMapsPhoneSimulator
                 {
                     LonLat location = m_locations[index];
 
-                    m_client.NewPosition(userId, location);
+                    m_client.NewPosition(userId, location.Longitude, location.Latitude);
 
                     if (m_isVerbose)
                     {

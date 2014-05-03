@@ -8,6 +8,7 @@
         #region attributes
         private ClientUserService m_clientUserService;
         private PhoneUserService m_phoneUserService;
+        private PositionService m_positionService;
         #endregion
 
 
@@ -28,6 +29,15 @@
         {
             get { return m_phoneUserService; }
         }
+
+
+        /// <summary>
+        /// Gets the <see cref="PositionService"/> service entity;
+        /// </summary>
+        public PositionService PositionService
+        {
+            get { return m_positionService; }
+        }
         #endregion
 
 
@@ -39,8 +49,8 @@
         {
             m_clientUserService = new ClientUserService();
             m_phoneUserService = new PhoneUserService();
+            m_positionService = new PositionService();
         }
         #endregion
     }
-    
 }

@@ -23,8 +23,9 @@ namespace ArkyMapService
         /// Register a new position for user belongs to user ID.
         /// </summary>
         /// <param name="userId">ID of user.</param>
-        /// <param name="location">Location value.</param>
+        /// <param name="longitude">Longitude value.</param>
+        /// <param name="latitude">Latitude value.</param>
         [OperationContract]
-        void NewPosition(long userId, LonLat location);
+        void NewPosition(long userId, double longitude, double latitude);
     }
 }

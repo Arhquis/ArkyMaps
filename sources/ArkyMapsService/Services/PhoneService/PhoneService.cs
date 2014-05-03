@@ -37,10 +37,11 @@ namespace ArkyMapService
         /// Register a new position for user belongs to user ID.
         /// </summary>
         /// <param name="userId">ID of user.</param>
-        /// <param name="location">Location value.</param>
-        public void NewPosition(long userId, LonLat location)
+        /// <param name="longitude">Longitude value.</param>
+        /// <param name="latitude">Latitude value.</param>
+        public void NewPosition(long userId, double longitude, double latitude)
         {
-            ServiceController.Instance.NewPosition(userId, location);
+            ServiceController.Instance.NewPosition(userId, longitude, latitude);
         }
         #endregion
     }

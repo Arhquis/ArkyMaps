@@ -303,16 +303,27 @@ namespace ArkyMapService
         /// Saves incoming new position and send it to every connected map clients.
         /// </summary>
         /// <param name="userId">ID of user sent location data.</param>
-        /// <param name="lonLat">Location value.</param>
-        public void NewPosition(long userId, LonLat lonLat)
+        /// <param name="longitude">Longitude value.</param>
+        /// <param name="latitude">Latitude value.</param>
+        public void NewPosition(long userId, double longitude, double latitude)
         {
             DM.Position position = new DM.Position
             {
                 PhoneUserId = userId,
-                Location = lonLat
+                Location = new LonLat(longitude, latitude),
+                Timestamp = DateTime.Now
             };
 
-            Console.WriteLine(string.Format("Position data sent. (UserId: {0}, Location: {1}", userId, lonLat));
+            Console.WriteLine(string.Format("Position data sent. (UserId: {0}, Location: {1}", userId, position.Location));
+
+            try
+            {
+                m_dalServices.PositionService.CreatePosition(position);
+            }
+            catch (Exception ex)
+            {
+                m_logger.WriteLog(Messages.ERROR_CREATE_POSITION, ex.Message);
+            }
 
             foreach (IMapServiceCallback userCallback in m_registeredUsers.Values)
             {

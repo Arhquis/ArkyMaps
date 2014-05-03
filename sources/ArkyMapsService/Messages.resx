@@ -121,6 +121,10 @@
     <value>Unable to create phone user {0}.</value>
     <comment>0: exception message</comment>
   </data>
+  <data name="ERROR_CREATE_POSITION" xml:space="preserve">
+    <value>Unable to create position user {0}.</value>
+    <comment>0: exception message</comment>
+  </data>
   <data name="ERROR_DELETE_PHONE_USER" xml:space="preserve">
     <value>Unable to delete phone user {0}.</value>
     <comment>0: exception message</comment>

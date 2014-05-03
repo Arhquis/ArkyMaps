@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 
 using DM = ArkyMapsDomainModel;
@@ -14,6 +15,7 @@ namespace ArkyMapsDal.UnitTest
         #region attributes
         private ClientUserService m_clientUserService;
         private PhoneUserService m_phoneUserService;
+        private PositionService m_positionService;
         #endregion
 
 
@@ -25,6 +27,7 @@ namespace ArkyMapsDal.UnitTest
 
             m_clientUserService = dalServices.ClientUserService;
             m_phoneUserService = dalServices.PhoneUserService;
+            m_positionService = dalServices.PositionService;
         }
         #endregion
 
@@ -126,6 +129,24 @@ namespace ArkyMapsDal.UnitTest
 
             Assert.IsNotNull(phoneUser);
             Assert.AreEqual(userId, phoneUser.ID);
+        }
+        #endregion
+
+
+        #region position
+        [TestMethod]
+        public void CreatePosition()
+        {
+            DM.Position position = new DM.Position()
+            {
+                PhoneUserId = 2,
+                Location = new DM.LonLat(20.1502990722656, 46.2543631305497),
+                Timestamp = DateTime.Now
+            };
+
+            bool succeeded = m_positionService.CreatePosition(position);
+
+            Assert.IsTrue(succeeded);
         }
         #endregion
     }

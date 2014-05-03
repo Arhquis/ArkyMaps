@@ -16,8 +16,9 @@ namespace ArkyMapsDal
     {
         public long ID { get; set; }
         public long PhoneUserId { get; set; }
-        public float Longitude { get; set; }
-        public float Latitude { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
+        public System.DateTime Timestamp { get; set; }
     
         public virtual PhoneUser PhoneUser { get; set; }
     }
