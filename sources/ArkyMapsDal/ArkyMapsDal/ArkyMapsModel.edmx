@@ -31,8 +31,9 @@
           </Key>
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PhoneUserId" Type="bigint" Nullable="false" />
-          <Property Name="Longitude" Type="real" Nullable="false" />
-          <Property Name="Latitude" Type="real" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
         <Association Name="FK_Position_PhoneUser">
           <End Role="PhoneUser" Type="Self.PhoneUser" Multiplicity="1" />
@@ -77,8 +78,8 @@
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Male" Type="Boolean" Nullable="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Position" Relationship="ArkyMapsDatabaseModel.FK_Position_PhoneUser" FromRole="PhoneUser" ToRole="Position" />
           <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Position" Relationship="ArkyMapsDatabaseModel.FK_Position_PhoneUser" FromRole="PhoneUser" ToRole="Position" />
         </EntityType>
         <EntityContainer Name="ArkyMapsDatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ClientUser" EntityType="Self.ClientUser" />
@@ -95,8 +96,9 @@
           </Key>
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PhoneUserId" Type="Int64" Nullable="false" />
-          <Property Name="Longitude" Type="Single" Nullable="false" />
-          <Property Name="Latitude" Type="Single" Nullable="false" />
+          <Property Name="Longitude" Type="Double" Nullable="false" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="7" />
           <NavigationProperty Name="PhoneUser" Relationship="ArkyMapsDatabaseModel.FK_Position_PhoneUser" FromRole="Position" ToRole="PhoneUser" />
         </EntityType>
         <Association Name="FK_Position_PhoneUser">
@@ -142,6 +144,7 @@
           <EntitySetMapping Name="Position">
             <EntityTypeMapping TypeName="ArkyMapsDatabaseModel.Position">
               <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
                 <ScalarProperty Name="Latitude" ColumnName="Latitude" />
                 <ScalarProperty Name="Longitude" ColumnName="Longitude" />
                 <ScalarProperty Name="PhoneUserId" ColumnName="PhoneUserId" />

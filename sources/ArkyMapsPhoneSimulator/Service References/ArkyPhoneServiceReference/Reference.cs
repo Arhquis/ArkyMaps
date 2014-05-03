@@ -22,10 +22,10 @@ namespace ArkyMapsPhoneSimulator.ArkyPhoneServiceReference {
         System.Threading.Tasks.Task<long> LoginAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMaps.com/PhoneService/IPhoneService/NewPosition", ReplyAction="ArkyMaps.com/PhoneService/IPhoneService/NewPositionResponse")]
-        void NewPosition(long userId, ArkyMapsDomainModel.LonLat location);
+        void NewPosition(long userId, double longitude, double latitude);
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMaps.com/PhoneService/IPhoneService/NewPosition", ReplyAction="ArkyMaps.com/PhoneService/IPhoneService/NewPositionResponse")]
-        System.Threading.Tasks.Task NewPositionAsync(long userId, ArkyMapsDomainModel.LonLat location);
+        System.Threading.Tasks.Task NewPositionAsync(long userId, double longitude, double latitude);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -63,12 +63,12 @@ namespace ArkyMapsPhoneSimulator.ArkyPhoneServiceReference {
             return base.Channel.LoginAsync(username, password);
         }
         
-        public void NewPosition(long userId, ArkyMapsDomainModel.LonLat location) {
-            base.Channel.NewPosition(userId, location);
+        public void NewPosition(long userId, double longitude, double latitude) {
+            base.Channel.NewPosition(userId, longitude, latitude);
         }
         
-        public System.Threading.Tasks.Task NewPositionAsync(long userId, ArkyMapsDomainModel.LonLat location) {
-            return base.Channel.NewPositionAsync(userId, location);
+        public System.Threading.Tasks.Task NewPositionAsync(long userId, double longitude, double latitude) {
+            return base.Channel.NewPositionAsync(userId, longitude, latitude);
         }
     }
 }

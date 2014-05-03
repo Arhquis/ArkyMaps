@@ -7,7 +7,7 @@
       <Diagram DiagramId="a49d5259907a4183af020e190811ac39" Name="Diagram1">
         <EntityTypeShape EntityType="ArkyMapsDatabaseModel.ClientUser" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ArkyMapsDatabaseModel.PhoneUser" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ArkyMapsDatabaseModel.Position" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="ArkyMapsDatabaseModel.Position" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="ArkyMapsDatabaseModel.FK_Position_PhoneUser" />
       </Diagram>
     </edmx:Diagrams>

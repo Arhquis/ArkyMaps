@@ -70,6 +70,15 @@ namespace ArkyMapService {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to create position user {0}..
+        /// </summary>
+        internal static string ERROR_CREATE_POSITION {
+            get {
+                return ResourceManager.GetString("ERROR_CREATE_POSITION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to delete phone user {0}..
         /// </summary>
         internal static string ERROR_DELETE_PHONE_USER {
