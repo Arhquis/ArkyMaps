@@ -37,10 +37,64 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="NewLocation">
+  <xs:element name="QueryPhoneUsers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryPhoneUsersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="ArkyMaps.com/PhoneService" minOccurs="0" name="location" nillable="true" type="q3:Location" />
+        <xs:element xmlns:q3="ArkyMaps.com/PhoneService" minOccurs="0" name="QueryPhoneUsersResult" nillable="true" type="q3:ArrayOfPhoneUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreatePhoneUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="ArkyMaps.com/PhoneService" minOccurs="0" name="phoneUser" nillable="true" type="q4:PhoneUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreatePhoneUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreatePhoneUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyPhoneUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="ArkyMaps.com/PhoneService" minOccurs="0" name="phoneUser" nillable="true" type="q5:PhoneUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModifyPhoneUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ModifyPhoneUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeletePhoneUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="ArkyMaps.com/PhoneService" minOccurs="0" name="phoneUser" nillable="true" type="q6:PhoneUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeletePhoneUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeletePhoneUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewPosition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="ArkyMaps.com/PhoneService" minOccurs="0" name="position" nillable="true" type="q7:Position" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

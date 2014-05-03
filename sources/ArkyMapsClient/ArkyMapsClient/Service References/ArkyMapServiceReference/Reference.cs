@@ -32,13 +32,37 @@ namespace ArkyMapsClient.ArkyMapServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/QueryPhoneUserById", ReplyAction="ArkyMapService/IMapService/QueryPhoneUserByIdResponse")]
         System.Threading.Tasks.Task<ArkyMapsDomainModel.PhoneUser> QueryPhoneUserByIdAsync(long userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/QueryPhoneUsers", ReplyAction="ArkyMapService/IMapService/QueryPhoneUsersResponse")]
+        ArkyMapsDomainModel.PhoneUser[] QueryPhoneUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/QueryPhoneUsers", ReplyAction="ArkyMapService/IMapService/QueryPhoneUsersResponse")]
+        System.Threading.Tasks.Task<ArkyMapsDomainModel.PhoneUser[]> QueryPhoneUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/CreatePhoneUser", ReplyAction="ArkyMapService/IMapService/CreatePhoneUserResponse")]
+        bool CreatePhoneUser(ArkyMapsDomainModel.PhoneUser phoneUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/CreatePhoneUser", ReplyAction="ArkyMapService/IMapService/CreatePhoneUserResponse")]
+        System.Threading.Tasks.Task<bool> CreatePhoneUserAsync(ArkyMapsDomainModel.PhoneUser phoneUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/ModifyPhoneUser", ReplyAction="ArkyMapService/IMapService/ModifyPhoneUserResponse")]
+        bool ModifyPhoneUser(ArkyMapsDomainModel.PhoneUser phoneUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/ModifyPhoneUser", ReplyAction="ArkyMapService/IMapService/ModifyPhoneUserResponse")]
+        System.Threading.Tasks.Task<bool> ModifyPhoneUserAsync(ArkyMapsDomainModel.PhoneUser phoneUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/DeletePhoneUser", ReplyAction="ArkyMapService/IMapService/DeletePhoneUserResponse")]
+        bool DeletePhoneUser(ArkyMapsDomainModel.PhoneUser phoneUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="ArkyMapService/IMapService/DeletePhoneUser", ReplyAction="ArkyMapService/IMapService/DeletePhoneUserResponse")]
+        System.Threading.Tasks.Task<bool> DeletePhoneUserAsync(ArkyMapsDomainModel.PhoneUser phoneUser);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IMapServiceCallback {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="ArkyMapService/IMapService/NewLocation")]
-        void NewLocation(ArkyMapsDomainModel.Location location);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="ArkyMapService/IMapService/NewPosition")]
+        void NewPosition(ArkyMapsDomainModel.Position position);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -91,6 +115,38 @@ namespace ArkyMapsClient.ArkyMapServiceReference {
         
         public System.Threading.Tasks.Task<ArkyMapsDomainModel.PhoneUser> QueryPhoneUserByIdAsync(long userId) {
             return base.Channel.QueryPhoneUserByIdAsync(userId);
+        }
+        
+        public ArkyMapsDomainModel.PhoneUser[] QueryPhoneUsers() {
+            return base.Channel.QueryPhoneUsers();
+        }
+        
+        public System.Threading.Tasks.Task<ArkyMapsDomainModel.PhoneUser[]> QueryPhoneUsersAsync() {
+            return base.Channel.QueryPhoneUsersAsync();
+        }
+        
+        public bool CreatePhoneUser(ArkyMapsDomainModel.PhoneUser phoneUser) {
+            return base.Channel.CreatePhoneUser(phoneUser);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreatePhoneUserAsync(ArkyMapsDomainModel.PhoneUser phoneUser) {
+            return base.Channel.CreatePhoneUserAsync(phoneUser);
+        }
+        
+        public bool ModifyPhoneUser(ArkyMapsDomainModel.PhoneUser phoneUser) {
+            return base.Channel.ModifyPhoneUser(phoneUser);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModifyPhoneUserAsync(ArkyMapsDomainModel.PhoneUser phoneUser) {
+            return base.Channel.ModifyPhoneUserAsync(phoneUser);
+        }
+        
+        public bool DeletePhoneUser(ArkyMapsDomainModel.PhoneUser phoneUser) {
+            return base.Channel.DeletePhoneUser(phoneUser);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeletePhoneUserAsync(ArkyMapsDomainModel.PhoneUser phoneUser) {
+            return base.Channel.DeletePhoneUserAsync(phoneUser);
         }
     }
 }

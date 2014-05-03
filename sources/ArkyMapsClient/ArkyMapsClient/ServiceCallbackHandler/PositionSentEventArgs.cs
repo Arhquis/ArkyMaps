@@ -6,13 +6,13 @@ namespace ArkyMapsClient
     /// <summary>
     /// Location event data container class..
     /// </summary>
-    public class LocationSentEventArgs : EventArgs
+    public class PositionSentEventArgs : EventArgs
     {
         #region properties
         /// <summary>
-        /// Gets or set the location value of the event.
+        /// Gets or set the position value of the event.
         /// </summary>
-        public Location Location { get; set; }
+        public Position Position { get; set; }
         #endregion
     }
 }

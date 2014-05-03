@@ -63,8 +63,44 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="NewLocation">
-      <soap12:operation soapAction="ArkyMapService/IMapService/NewLocation" style="document" />
+    <wsdl:operation name="QueryPhoneUsers">
+      <soap12:operation soapAction="ArkyMapService/IMapService/QueryPhoneUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePhoneUser">
+      <soap12:operation soapAction="ArkyMapService/IMapService/CreatePhoneUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyPhoneUser">
+      <soap12:operation soapAction="ArkyMapService/IMapService/ModifyPhoneUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePhoneUser">
+      <soap12:operation soapAction="ArkyMapService/IMapService/DeletePhoneUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NewPosition">
+      <soap12:operation soapAction="ArkyMapService/IMapService/NewPosition" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>

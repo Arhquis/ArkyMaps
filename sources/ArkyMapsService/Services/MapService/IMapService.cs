@@ -38,7 +38,7 @@ namespace ArkyMapService
 
 
         /// <summary>
-        /// Query all <see cref="DM.PhoneUser"/> entities.
+        /// Query all <see cref="PhoneUser"/> entities.
         /// </summary>
         /// <returns>Collection of <see cref="PhoneUser"/> entities.</returns>
         [OperationContract]

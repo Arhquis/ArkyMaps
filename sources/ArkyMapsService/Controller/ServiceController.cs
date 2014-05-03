@@ -300,29 +300,28 @@ namespace ArkyMapService
 
 
         /// <summary>
-        /// Saves incoming new location and send it to every connected map clients.
+        /// Saves incoming new position and send it to every connected map clients.
         /// </summary>
         /// <param name="userId">ID of user sent location data.</param>
         /// <param name="lonLat">Location value.</param>
-        public void NewLocation(long userId, LonLat lonLat)
+        public void NewPosition(long userId, LonLat lonLat)
         {
-            DM.Position location = new DM.Position
+            DM.Position position = new DM.Position
             {
                 PhoneUserId = userId,
                 Location = lonLat
             };
 
-            Console.WriteLine(string.Format("Location data sent. (UserId: {0}, Location: {1}", userId, lonLat));
+            Console.WriteLine(string.Format("Position data sent. (UserId: {0}, Location: {1}", userId, lonLat));
 
             foreach (IMapServiceCallback userCallback in m_registeredUsers.Values)
             {
                 try
                 {
-                    userCallback.NewLocation(location);
+                    userCallback.NewPosition(position);
                 }
                 catch (Exception)
                 {
-                    
                 }
             }
         }

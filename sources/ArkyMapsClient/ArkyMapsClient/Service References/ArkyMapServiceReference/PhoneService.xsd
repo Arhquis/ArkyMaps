@@ -10,20 +10,29 @@
   <xs:element name="ClientUser" nillable="true" type="tns:ClientUser" />
   <xs:complexType name="PhoneUser">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Male" type="xs:boolean" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="PhoneUser" nillable="true" type="tns:PhoneUser" />
-  <xs:complexType name="Location">
+  <xs:complexType name="ArrayOfPhoneUser">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ID" type="xs:long" />
-      <xs:element minOccurs="0" name="PhoneUserId" type="xs:long" />
-      <xs:element minOccurs="0" name="Value" nillable="true" type="tns:LonLat" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PhoneUser" nillable="true" type="tns:PhoneUser" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Location" nillable="true" type="tns:Location" />
+  <xs:element name="ArrayOfPhoneUser" nillable="true" type="tns:ArrayOfPhoneUser" />
+  <xs:complexType name="Position">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:long" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="tns:LonLat" />
+      <xs:element minOccurs="0" name="PhoneUserId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Position" nillable="true" type="tns:Position" />
   <xs:complexType name="LonLat">
     <xs:sequence>
       <xs:element minOccurs="0" name="Latitude" type="xs:double" />

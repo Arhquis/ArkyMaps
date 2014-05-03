@@ -22,8 +22,32 @@
   <wsdl:message name="IMapService_QueryPhoneUserById_OutputMessage">
     <wsdl:part name="parameters" element="tns:QueryPhoneUserByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="IMapService_NewLocation_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:NewLocation" />
+  <wsdl:message name="IMapService_QueryPhoneUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:QueryPhoneUsers" />
+  </wsdl:message>
+  <wsdl:message name="IMapService_QueryPhoneUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:QueryPhoneUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMapService_CreatePhoneUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePhoneUser" />
+  </wsdl:message>
+  <wsdl:message name="IMapService_CreatePhoneUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePhoneUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMapService_ModifyPhoneUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyPhoneUser" />
+  </wsdl:message>
+  <wsdl:message name="IMapService_ModifyPhoneUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyPhoneUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMapService_DeletePhoneUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePhoneUser" />
+  </wsdl:message>
+  <wsdl:message name="IMapService_DeletePhoneUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePhoneUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMapService_NewPosition_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NewPosition" />
   </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="IMapService">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="Login">
@@ -37,8 +61,24 @@
       <wsdl:input wsaw:Action="ArkyMapService/IMapService/QueryPhoneUserById" message="tns:IMapService_QueryPhoneUserById_InputMessage" />
       <wsdl:output wsaw:Action="ArkyMapService/IMapService/QueryPhoneUserByIdResponse" message="tns:IMapService_QueryPhoneUserById_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="NewLocation">
-      <wsdl:output wsaw:Action="ArkyMapService/IMapService/NewLocation" message="tns:IMapService_NewLocation_OutputCallbackMessage" />
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="QueryPhoneUsers">
+      <wsdl:input wsaw:Action="ArkyMapService/IMapService/QueryPhoneUsers" message="tns:IMapService_QueryPhoneUsers_InputMessage" />
+      <wsdl:output wsaw:Action="ArkyMapService/IMapService/QueryPhoneUsersResponse" message="tns:IMapService_QueryPhoneUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="CreatePhoneUser">
+      <wsdl:input wsaw:Action="ArkyMapService/IMapService/CreatePhoneUser" message="tns:IMapService_CreatePhoneUser_InputMessage" />
+      <wsdl:output wsaw:Action="ArkyMapService/IMapService/CreatePhoneUserResponse" message="tns:IMapService_CreatePhoneUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ModifyPhoneUser">
+      <wsdl:input wsaw:Action="ArkyMapService/IMapService/ModifyPhoneUser" message="tns:IMapService_ModifyPhoneUser_InputMessage" />
+      <wsdl:output wsaw:Action="ArkyMapService/IMapService/ModifyPhoneUserResponse" message="tns:IMapService_ModifyPhoneUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="DeletePhoneUser">
+      <wsdl:input wsaw:Action="ArkyMapService/IMapService/DeletePhoneUser" message="tns:IMapService_DeletePhoneUser_InputMessage" />
+      <wsdl:output wsaw:Action="ArkyMapService/IMapService/DeletePhoneUserResponse" message="tns:IMapService_DeletePhoneUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="NewPosition">
+      <wsdl:output wsaw:Action="ArkyMapService/IMapService/NewPosition" message="tns:IMapService_NewPosition_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

@@ -11,8 +11,8 @@ namespace ArkyMapService
         /// <summary>
         /// Send new <see cref="Position"/> entity to clients.
         /// </summary>
-        /// <param name="location">The new <see cref="Position"/>.</param>
+        /// <param name="position">The new <see cref="Position"/>.</param>
         [OperationContract(IsOneWay = true)]
-        void NewLocation(Position location);
+        void NewPosition(Position position);
     }
 }
