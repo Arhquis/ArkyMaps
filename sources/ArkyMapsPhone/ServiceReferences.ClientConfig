@@ -9,7 +9,7 @@
             </basicHttpBinding>
         </bindings>
         <client>
-            <endpoint address="http://192.168.0.218:8081/PhoneService/service"
+            <endpoint address="http://10.6.11.16:8081/PhoneService/service"
                 binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IPhoneService"
                 contract="ArkyPhoneServiceReference.IPhoneService" name="BasicHttpBinding_IPhoneService" />
         </client>

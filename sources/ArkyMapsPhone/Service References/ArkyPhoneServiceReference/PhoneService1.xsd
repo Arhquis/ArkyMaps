@@ -15,22 +15,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="NewLocation">
+  <xs:element name="NewPosition">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="userId" type="xs:long" />
-        <xs:element minOccurs="0" name="location" nillable="true" type="tns:LonLat" />
+        <xs:element minOccurs="0" name="longitude" type="xs:double" />
+        <xs:element minOccurs="0" name="latitude" type="xs:double" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:complexType name="LonLat">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Latitude" type="xs:double" />
-      <xs:element minOccurs="0" name="Longitude" type="xs:double" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="LonLat" nillable="true" type="tns:LonLat" />
-  <xs:element name="NewLocationResponse">
+  <xs:element name="NewPositionResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

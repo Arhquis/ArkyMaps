@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="acf2c870-5f5a-4f85-b9c8-2daf4d4082e6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ebe23e7f-8cf8-417d-8e0d-3780ce0a7f86" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -20,14 +20,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.0.218:8081/PhoneService" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://10.6.11.16:8081/PhoneService" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="PhoneService.wsdl" MetadataType="Wsdl" ID="cee08ba7-f441-4a10-96b1-d78596335ab2" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?wsdl=wsdl0" />
-    <MetadataFile FileName="PhoneService1.wsdl" MetadataType="Wsdl" ID="039ab69f-f779-4421-a9ac-b113e4cabb34" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?wsdl" />
-    <MetadataFile FileName="PhoneService.xsd" MetadataType="Schema" ID="62da1d58-bf5c-4144-beb9-8ef8f8708133" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?xsd=xsd1" />
-    <MetadataFile FileName="PhoneService1.xsd" MetadataType="Schema" ID="6bf0dfda-af9f-431b-bcd4-602259322809" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?xsd=xsd0" />
-    <MetadataFile FileName="PhoneService.disco" MetadataType="Disco" ID="04ccaa6f-58b7-4ebf-a8aa-4bb2ea15eb34" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?disco" />
+    <MetadataFile FileName="PhoneService.wsdl" MetadataType="Wsdl" ID="7e5d64a2-1111-4740-ac49-11da7d0835f1" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?wsdl=wsdl0" />
+    <MetadataFile FileName="PhoneService1.wsdl" MetadataType="Wsdl" ID="7c22a847-54c6-4e2f-9225-900607e329db" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?wsdl" />
+    <MetadataFile FileName="PhoneService.xsd" MetadataType="Schema" ID="94d126a9-0dbc-4eca-b58f-f2974343ada4" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?xsd=xsd1" />
+    <MetadataFile FileName="PhoneService1.xsd" MetadataType="Schema" ID="050519f5-e3e4-44f5-94cc-feb3de027f41" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?xsd=xsd0" />
+    <MetadataFile FileName="PhoneService.disco" MetadataType="Disco" ID="1bdd3dd6-3093-4488-b9c6-f84456f1602c" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

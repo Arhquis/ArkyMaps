@@ -93,6 +93,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Constants.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -102,6 +103,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SenderPage.xaml.cs">
+      <DependentUpon>SenderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Service References\ArkyPhoneServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -118,12 +122,25 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SenderPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Resources\LocationList.txt" />
+    <None Include="Service References\ArkyPhoneServiceReference\PhoneService.disco" />
+    <None Include="Service References\ArkyPhoneServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\ArkyPhoneServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ArkyPhoneServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Service References\ArkyPhoneServiceReference\PhoneService.wsdl" />
     <None Include="Service References\ArkyPhoneServiceReference\PhoneService.xsd">
       <SubType>Designer</SubType>
@@ -132,7 +149,6 @@
     <None Include="Service References\ArkyPhoneServiceReference\PhoneService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
@@ -154,13 +170,6 @@
     <Content Include="Assets\Tiles\IconicTileSmall.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Service References\ArkyPhoneServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\ArkyPhoneServiceReference\configuration.svcinfo" />
-    <None Include="Service References\ArkyPhoneServiceReference\configuration91.svcinfo" />
-    <None Include="Service References\ArkyPhoneServiceReference\PhoneService.disco" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.resx">

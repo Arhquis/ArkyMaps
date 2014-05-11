@@ -12,20 +12,20 @@
   <wsdl:message name="IPhoneService_Login_OutputMessage">
     <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
-  <wsdl:message name="IPhoneService_NewLocation_InputMessage">
-    <wsdl:part name="parameters" element="tns:NewLocation" />
+  <wsdl:message name="IPhoneService_NewPosition_InputMessage">
+    <wsdl:part name="parameters" element="tns:NewPosition" />
   </wsdl:message>
-  <wsdl:message name="IPhoneService_NewLocation_OutputMessage">
-    <wsdl:part name="parameters" element="tns:NewLocationResponse" />
+  <wsdl:message name="IPhoneService_NewPosition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NewPositionResponse" />
   </wsdl:message>
   <wsdl:portType name="IPhoneService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="ArkyMaps.com/PhoneService/IPhoneService/Login" message="tns:IPhoneService_Login_InputMessage" />
       <wsdl:output wsaw:Action="ArkyMaps.com/PhoneService/IPhoneService/LoginResponse" message="tns:IPhoneService_Login_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="NewLocation">
-      <wsdl:input wsaw:Action="ArkyMaps.com/PhoneService/IPhoneService/NewLocation" message="tns:IPhoneService_NewLocation_InputMessage" />
-      <wsdl:output wsaw:Action="ArkyMaps.com/PhoneService/IPhoneService/NewLocationResponse" message="tns:IPhoneService_NewLocation_OutputMessage" />
+    <wsdl:operation name="NewPosition">
+      <wsdl:input wsaw:Action="ArkyMaps.com/PhoneService/IPhoneService/NewPosition" message="tns:IPhoneService_NewPosition_InputMessage" />
+      <wsdl:output wsaw:Action="ArkyMaps.com/PhoneService/IPhoneService/NewPositionResponse" message="tns:IPhoneService_NewPosition_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

@@ -1,89 +1,157 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
+﻿using ArkyMapsPhone.ArkyPhoneServiceReference;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using ArkyMapsPhone.Resources;
-using ArkyMapsPhone.ArkyPhoneServiceReference;
-using System.Threading;
+using System;
+using System.ComponentModel;
+using System.IO.IsolatedStorage;
+using System.ServiceModel;
+using System.Windows;
+using System.Windows.Navigation;
 
 namespace ArkyMapsPhone
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        private PhoneServiceClient m_client;
-        private long m_userId;
-        private Thread m_thread;
+        #region constants
+        private const string ERROR_MESSAGE = "Failed to login!";
+        private const string SERVICE_ENDPOINT_CONFIGURATION_NAME = "BasicHttpBinding_IPhoneService";
+        private const string SERVICE_REMOTE_ADDRESS = "http://10.6.11.16:8081/PhoneService/service";
+        private const string PAGE_SENDER_PAGE = "/SenderPage.xaml";
+        private readonly Uri SENDER_PAGE_URI = new Uri("/SenderPage.xaml", UriKind.Relative);
+        #endregion
 
-        // Constructor
+
+        #region attributes
+        private PhoneServiceClient m_serviceClient;
+        #endregion
+
+
+        #region constructors
         public MainPage()
         {
             InitializeComponent();
 
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
+#if DEBUG
+            m_tbServiceAddress.Text = "http://10.6.11.16:8081/PhoneService/service";
+            m_tbUsername.Text = "test4";
+            m_tbPassword.Text = "test4";
+#endif
         }
+        #endregion
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        #region lifetime
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-            m_client = new PhoneServiceClient();
+            SetUIState(false);
 
-            m_client.OpenCompleted += m_client_OpenCompleted;
-            m_client.OpenAsync();
-        }
-
-        void m_client_OpenCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
-        {
-            m_client.LoginCompleted += m_client_LoginCompleted;
-            m_client.LoginAsync("Test1", "Test1");
-        }
-
-        void m_client_LoginCompleted(object sender, LoginCompletedEventArgs e)
-        {
-            m_userId = e.Result;
-
-            m_thread = new Thread(DoWork);
-            m_thread.IsBackground = true;
-
-            m_thread.Start();
-        }
-
-
-        private void DoWork()
-        {
-            while (true)
+            try
             {
-                m_client.NewLocationAsync(m_userId, new LonLat {Longitude = 10.3, Latitude = 3.12});
-
-                Thread.Sleep(3000);
+                m_serviceClient = new PhoneServiceClient("BasicHttpBinding_IPhoneService", "http://10.6.11.16:8081/PhoneService/service");
+                m_serviceClient.OpenCompleted += Client_OpenCompleted;
+                m_serviceClient.OpenAsync();
+            }
+            catch (Exception)
+            {
+                RollbackOnError();
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            m_thread.Abort();
 
-            m_client.CloseAsync();
+        private void Client_OpenCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            try
+            {
+                m_serviceClient.LoginCompleted += Client_LoginCompleted;
+
+                m_serviceClient.LoginAsync(m_tbUsername.Text, m_tbPassword.Text);
+            }
+            catch (Exception)
+            {
+                RollbackOnError();
+            }
         }
 
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
-        //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
 
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
+        private void Client_LoginCompleted(object sender, LoginCompletedEventArgs e)
+        {
+            SetUIState(true);
 
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
-        //}
+            PhoneApplicationService.Current.State["userId"] =  e.Result;
+            PhoneApplicationService.Current.State["serviceClient"] = m_serviceClient;
+            
+            NavigationService.Navigate(SENDER_PAGE_URI);
+        }
+
+
+        private void SetUIState(bool enabled)
+        {
+            m_tbServiceAddress.IsEnabled = enabled;
+            m_tbUsername.IsEnabled = enabled;
+            m_tbPassword.IsEnabled = enabled;
+            m_btnLogin.IsEnabled = enabled;
+        }
+
+
+        private void RollbackOnError()
+        {
+            CleanUp();
+            m_serviceClient = null;
+
+            MessageBox.Show("Failed to login!");
+
+            SetUIState(true);
+        }
+
+
+        private void CleanUp()
+        {
+            if (m_serviceClient != null && m_serviceClient.State != CommunicationState.Closed)
+            {
+                m_serviceClient.CloseAsync();
+            }
+
+            m_serviceClient = null;
+
+            PhoneApplicationService.Current.State["userId"] = null;
+            PhoneApplicationService.Current.State["serviceClient"] =  null;
+        }
+        #endregion
+
+
+        #region navigation
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            this.CleanUp();
+        }
+
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            if (!IsolatedStorageSettings.ApplicationSettings.Contains("LocationConsent"))
+            {
+                MessageBoxResult result = MessageBox.Show("This app accesses your phone's location. Is that ok?", "Location", MessageBoxButton.OKCancel);
+
+                if (result == MessageBoxResult.OK)
+                {
+                    IsolatedStorageSettings.ApplicationSettings["LocationConsent"] = true;
+                }
+                else
+                {
+                    IsolatedStorageSettings.ApplicationSettings["LocationConsent"] = false;
+                }
+                
+                IsolatedStorageSettings.ApplicationSettings.Save();
+                
+                if (!e.Uri.Equals(SENDER_PAGE_URI))
+                {
+                    this.CleanUp();
+                }
+            }
+        }
+        #endregion
     }
 }
