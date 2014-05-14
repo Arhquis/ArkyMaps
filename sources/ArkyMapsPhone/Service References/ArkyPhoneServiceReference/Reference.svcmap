@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ebe23e7f-8cf8-417d-8e0d-3780ce0a7f86" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://10.6.11.16:8081/PhoneService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PhoneService.wsdl" MetadataType="Wsdl" ID="7e5d64a2-1111-4740-ac49-11da7d0835f1" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?wsdl=wsdl0" />
+    <MetadataFile FileName="PhoneService1.wsdl" MetadataType="Wsdl" ID="7c22a847-54c6-4e2f-9225-900607e329db" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?wsdl" />
+    <MetadataFile FileName="PhoneService.xsd" MetadataType="Schema" ID="94d126a9-0dbc-4eca-b58f-f2974343ada4" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?xsd=xsd1" />
+    <MetadataFile FileName="PhoneService1.xsd" MetadataType="Schema" ID="050519f5-e3e4-44f5-94cc-feb3de027f41" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?xsd=xsd0" />
+    <MetadataFile FileName="PhoneService.disco" MetadataType="Disco" ID="1bdd3dd6-3093-4488-b9c6-f84456f1602c" SourceId="1" SourceUrl="http://10.6.11.16:8081/PhoneService?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
